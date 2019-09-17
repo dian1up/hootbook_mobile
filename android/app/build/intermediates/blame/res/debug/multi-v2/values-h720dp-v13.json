@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\tugasakhir\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
+            "outputFile": "E:\\bootcamp-arkademy\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ulila\\.gradle\\caches\\transforms-2\\files-2.1\\2b7492c0fa0c83a95eeef8e48d459c2d\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "source": "C:\\Users\\pandr\\.gradle\\caches\\transforms-2\\files-2.1\\b884b8ecf44192e466cc24c4aa568278\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

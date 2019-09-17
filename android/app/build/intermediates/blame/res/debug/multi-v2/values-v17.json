@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\tugasakhir\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v17\\values-v17.xml",
+            "outputFile": "E:\\bootcamp-arkademy\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v17\\values-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ulila\\.gradle\\caches\\transforms-2\\files-2.1\\2b7492c0fa0c83a95eeef8e48d459c2d\\res\\values-v17\\values-v17.xml",
+                    "source": "C:\\Users\\pandr\\.gradle\\caches\\transforms-2\\files-2.1\\b884b8ecf44192e466cc24c4aa568278\\res\\values-v17\\values-v17.xml",
                     "from": {
                         "startLines": "2,5,9,12,15,18,22,25,29,33,37,40,43,46,50,53,57",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
