@@ -8,8 +8,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "16.8.6",
-    "react-native": "0.60.5"
+    "react-native": "0.60.5",
+    "react-native-vector-icons": "4.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",

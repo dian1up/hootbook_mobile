@@ -5,6 +5,7 @@ INJECTED from D:\tugasakhir\hootbook_mobile\android\app\src\main\AndroidManifest
 INJECTED from D:\tugasakhir\hootbook_mobile\android\app\src\main\AndroidManifest.xml:1:1-26:12
 INJECTED from D:\tugasakhir\hootbook_mobile\android\app\src\main\AndroidManifest.xml:1:1-26:12
 MERGED from D:\tugasakhir\hootbook_mobile\android\app\src\main\AndroidManifest.xml:1:1-26:12
+MERGED from [:react-native-vector-icons] D:\tugasakhir\hootbook_mobile\node_modules\react-native-vector-icons\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.react:react-native:0.60.5] C:\Users\ulila\.gradle\caches\transforms-2\files-2.1\0b5fdb9879b2c73387585af9cfd0aa8d\AndroidManifest.xml:2:1-13:12
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\ulila\.gradle\caches\transforms-2\files-2.1\1872eaab3aa5d5ca0a2c8b63582afbbe\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\ulila\.gradle\caches\transforms-2\files-2.1\2b7492c0fa0c83a95eeef8e48d459c2d\AndroidManifest.xml:17:1-22:12
@@ -132,6 +133,8 @@ uses-sdk
 INJECTED from D:\tugasakhir\hootbook_mobile\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\tugasakhir\hootbook_mobile\android\app\src\main\AndroidManifest.xml
 INJECTED from D:\tugasakhir\hootbook_mobile\android\app\src\main\AndroidManifest.xml
+MERGED from [:react-native-vector-icons] D:\tugasakhir\hootbook_mobile\node_modules\react-native-vector-icons\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] D:\tugasakhir\hootbook_mobile\node_modules\react-native-vector-icons\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.60.5] C:\Users\ulila\.gradle\caches\transforms-2\files-2.1\0b5fdb9879b2c73387585af9cfd0aa8d\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.60.5] C:\Users\ulila\.gradle\caches\transforms-2\files-2.1\0b5fdb9879b2c73387585af9cfd0aa8d\AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\ulila\.gradle\caches\transforms-2\files-2.1\1872eaab3aa5d5ca0a2c8b63582afbbe\AndroidManifest.xml:7:5-9:41
