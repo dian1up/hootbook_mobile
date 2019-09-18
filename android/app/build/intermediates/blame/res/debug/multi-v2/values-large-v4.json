@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\bootcamp-arkademy\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
+            "outputFile": "E:\\ProjectKu\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\pandr\\.gradle\\caches\\transforms-2\\files-2.1\\b884b8ecf44192e466cc24c4aa568278\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\713e21d981d7b1d61a8cd1b963d6279f\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
