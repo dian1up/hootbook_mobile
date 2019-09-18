@@ -1,15 +1,25 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import {
+    View,
+    StyleSheet,
+    TextInput,
+    Text,
+    TouchableOpacity,
+} from 'react-native'
 
-import RegisterPartner from './src/screens/RegisterPartner'
-import HomePartner from './src/screens/HomePartner'
-import RegisterUser from './src/screens/RegisterUser'
+// import Register from './src/screens/Register'
+// import Login from './src/screens/login'
+import AppContainer from './src/route/mainNavigator'
+
 
 export default class App extends Component {
     render() {
         return (
-            // <RegisterUser/>
-            <RegisterPartner/>
-            // <HomePartner/>
+            <Fragment>
+                {/* <Login /> */}
+                {/* <Register /> */}
+                <AppContainer />
+            </Fragment>
         )
     }
 }
