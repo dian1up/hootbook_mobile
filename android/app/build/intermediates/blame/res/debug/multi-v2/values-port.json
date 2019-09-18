@@ -1,17 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
             "outputFile": "E:\\ProjectKu\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\713e21d981d7b1d61a8cd1b963d6279f\\res\\values-port\\values-port.xml",
-=======
-            "outputFile": "D:\\project\\HootBook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-2\\files-2.1\\f8b286da0252a9a747a193cf089ab382\\res\\values-port\\values-port.xml",
->>>>>>> master
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\02b05ad0f8391436bb838afed2c293e2\\res\\values-port\\values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

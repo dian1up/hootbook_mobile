@@ -7,12 +7,13 @@ import {
 import { createStackNavigator } from 'react-navigation-stack'
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs'
 import { Icon } from 'native-base'
-
+import Edit from '../screens/Edit'
+import RegisterUser from '../screens/RegisterUser'
 import Home from '../screens/Home'
 import Profile from '../screens/Profile'
 import Maps from '../screens/Maps'
 import Login from '../screens/login'
-import Register from '../screens/Register'
+import RegisterMitra from '../screens/RegisterMitra'
 import Detail from '../screens/Detail'
 import Chat from '../screens/Chat'
 // screen mitra
@@ -140,7 +141,7 @@ const MitraTabNavigator = createMaterialTopTabNavigator(
             },
         },
     },
-    {   initialRouteName:'Profile',
+    {  
         tabBarPosition: 'bottom',
         swipeEnabled: true,
         animationEnabled: false,
@@ -170,18 +171,21 @@ const MitraTabNavigator = createMaterialTopTabNavigator(
 
 const AppStackNavigator = createStackNavigator(
     {   Homemitra: MitraTabNavigator,
-        Home: UserTabNavigator,
-        Detail
+        Homeuser: UserTabNavigator,
+        Detail,
+        Edit,
 
     },
     {
+        initialRouteName:'Homeuser',
         headerMode: 'none',
     },
 );
 
 const AuthStack = createStackNavigator({
     Login,
-    Register,
+    RegisterMitra,
+    RegisterUser
 },
     { headerMode: 'none' })
 

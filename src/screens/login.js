@@ -32,7 +32,9 @@ class Login extends React.Component {
                     console.log('done', result)
                     AsyncStorage.setItem('token', result.data.token, (err)=>{
                         if(!err){
-                            const home = this.state.loginAs === 'partner' ? 'Homemitra' : 'Home'
+                            const home = this.state.loginAs === 'partner' ? 'Homemitra' : 'Homeuser'
+                            console.log(home);
+                            
                             this.props.navigation.navigate(home)
                         }
                         else console.log(err)
@@ -41,7 +43,7 @@ class Login extends React.Component {
                 })
                 .catch(err => {
                     this.setState({isLoading:false})
-                    console.log(err, `${config.host}/${this.state.loginAs}/login`)
+                    console.log(err, `${config.host}/login/${this.state.loginAs}`, this.state.formData)
                     alert(err)
                 })
         }else{
@@ -57,7 +59,7 @@ class Login extends React.Component {
                     source={require('../assets/images/bg4.png')}
                     style={{ marginBottom: 20, }}
                 />
-                <View style={{ height: height / 3, backgroundColor: '#fff', marginBottom:50}}>
+                <View style={{  backgroundColor: '#fff', marginBottom:50}}>
                     <TextInput
                         placeholder='email'
                         keyboardType='email-address'
@@ -73,8 +75,11 @@ class Login extends React.Component {
                     <Picker
                         selectedValue={this.state.loginAs}
                         style={styles.input}
-                        onValueChange={(itemValue, itemIndex) =>
-                            this.setState({loginAs: itemValue})
+                        onValueChange={(itemValue, itemIndex) =>{
+                            console.log(itemValue);
+                            
+                            this.setState({loginAs: itemValue}, ()=>console.log(this.state))
+                        }
                         }>
                         <Picker.Item label="Login as" value="" />
                         <Picker.Item label="User" value="user" />
@@ -90,12 +95,12 @@ class Login extends React.Component {
                         >
                             <Text style={{ fontSize: 16, fontWeight: '700', color: '#fff' }}>{this.state.isLoading ? 'Loading':'Sign In'}</Text>
                     </TouchableOpacity>
-                    <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'center', }}>
+                    <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'center',backgroundColor:'red' }}>
                         <View>
                             <Text style={{ color: 'grey' }}>Dont have an Account?</Text>
                         </View>
                         <View>
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
+                            <TouchableOpacity style={{zIndex:1}} onPress={() => this.props.navigation.navigate('RegisterUser')}>
                                 <Text style={{ color: '#295989', fontWeight: '700' }}>Sign Up</Text>
                             </TouchableOpacity>
                         </View>
