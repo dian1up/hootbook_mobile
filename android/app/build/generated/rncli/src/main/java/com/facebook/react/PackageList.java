@@ -13,8 +13,12 @@ import java.util.ArrayList;
 import com.hootbook_mobile.BuildConfig;
 import com.hootbook_mobile.R;
 
+// @react-native-community/async-storage
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 // @react-native-community/geolocation
 import com.reactnativecommunity.geolocation.GeolocationPackage;
+// react-native-firebase
+import io.invertase.firebase.RNFirebasePackage;
 // react-native-geocoder
 import com.devfd.RNGeocoder.RNGeocoderPackage;
 // react-native-gesture-handler
@@ -58,7 +62,9 @@ public class PackageList {
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(),
+      new AsyncStoragePackage(),
       new GeolocationPackage(),
+      new RNFirebasePackage(),
       new RNGeocoderPackage(),
       new RNGestureHandlerPackage(),
       new MapsPackage(),
