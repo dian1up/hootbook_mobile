@@ -191,7 +191,7 @@ const Apps = createSwitchNavigator({
     AppStackNavigator,
 
 }, {
-    initialRouteName: 'AppStackNavigator',
+    initialRouteName: 'AuthStack',
 })
 const AppContainer = createAppContainer(Apps)
 export default AppContainer
