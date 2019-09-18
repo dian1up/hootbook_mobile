@@ -15,6 +15,7 @@ import Login from '../screens/login'
 import Register from '../screens/Register'
 import Detail from '../screens/Detail'
 import Chat from '../screens/Chat'
+import Edit from '../screens/Edit'
 // screen mitra
 import HomeMitra from '../screens/HomeMitra'
 import ProfileMitra from '../screens/ProfileMitra'
@@ -70,10 +71,10 @@ const UserTabNavigator = createMaterialTopTabNavigator(
     },
     {
         tabBarPosition: 'bottom',
-        swipeEnabled: true,
+        swipeEnabled: false,
         animationEnabled: false,
         tabBarOptions: {
-            activeTintColor: '#000',
+            activeTintColor: '#0fbcf9',
             inactiveTintColor: 'grey',
             upperCaseLabel: false,
             labelStyle: {
@@ -170,8 +171,10 @@ const MitraTabNavigator = createMaterialTopTabNavigator(
 
 const AppStackNavigator = createStackNavigator(
     {
-        // Home: UserTabNavigator,
+        Home: UserTabNavigator,
         Homemitra: MitraTabNavigator,
+        Detail,
+        Edit
 
     },
     {
@@ -187,7 +190,8 @@ const AuthStack = createStackNavigator({
 
 const Apps = createSwitchNavigator({
     AuthStack,
-    AppStackNavigator
+    AppStackNavigator,
+
 }, {
     initialRouteName: 'AppStackNavigator',
 })
