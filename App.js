@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import {
     View,
     StyleSheet,
@@ -7,25 +7,19 @@ import {
     TouchableOpacity,
 } from 'react-native'
 
-import Register from './src/screens/Register'
+// import Register from './src/screens/Register'
+// import Login from './src/screens/login'
+import AppContainer from './src/route/mainNavigator'
+
 
 export default class App extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <Register/>
-            </View>
+            <Fragment>
+                {/* <Login /> */}
+                {/* <Register /> */}
+                <AppContainer />
+            </Fragment>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      paddingLeft: 60,
-      paddingRight: 60,
-      backgroundColor: '#36485f',
-
-    }
-})
