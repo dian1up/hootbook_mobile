@@ -1,10 +1,17 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
+            "outputFile": "E:\\ProjectKu\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-nl\\values-nl.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\713e21d981d7b1d61a8cd1b963d6279f\\res\\values-nl\\values-nl.xml",
+=======
             "outputFile": "D:\\project\\HootBook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-nl\\values-nl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-2\\files-2.1\\fc748380cefecdfc16fa80fcda1cbde5\\res\\values-nl\\values.xml",
+>>>>>>> master
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -21,6 +28,9 @@
                     }
                 },
                 {
+<<<<<<< HEAD
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\055a7457e3f76275a55766e0418dacd1\\res\\values-nl\\values.xml",
+=======
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-2\\files-2.1\\fe38e7fbccc61b2f36e22bf9f2234608\\res\\values-nl\\values-nl.xml",
                     "from": {
                         "startLines": "2",
@@ -39,6 +49,7 @@
                 },
                 {
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-2\\files-2.1\\b6604e662d5fd51dcebd5e63633793a5\\res\\values-nl\\values.xml",
+>>>>>>> master
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -55,7 +66,28 @@
                     }
                 },
                 {
+<<<<<<< HEAD
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\00a9e763c74e9b0f24ca751f20a13a01\\res\\values-nl\\values-nl.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "48",
+                        "startColumns": "4",
+                        "startOffsets": "5716",
+                        "endColumns": "100",
+                        "endOffsets": "5812"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\574b71ffd26e24042ba6f66857661232\\res\\values-nl\\values.xml",
+=======
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-2\\files-2.1\\2ebd40f1adb4e37dcbd7703eda919e8d\\res\\values-nl\\values.xml",
+>>>>>>> master
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

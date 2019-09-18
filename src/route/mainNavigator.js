@@ -140,7 +140,7 @@ const MitraTabNavigator = createMaterialTopTabNavigator(
             },
         },
     },
-    {
+    {   initialRouteName:'Profile',
         tabBarPosition: 'bottom',
         swipeEnabled: true,
         animationEnabled: false,
@@ -169,9 +169,8 @@ const MitraTabNavigator = createMaterialTopTabNavigator(
 
 
 const AppStackNavigator = createStackNavigator(
-    {
+    {   Homemitra: MitraTabNavigator,
         Home: UserTabNavigator,
-        Homemitra: MitraTabNavigator,
         Detail
 
     },

@@ -1,6 +1,12 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
+            "outputFile": "E:\\ProjectKu\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lt\\values-lt.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\055a7457e3f76275a55766e0418dacd1\\res\\values-lt\\values.xml",
+=======
             "outputFile": "D:\\project\\HootBook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lt\\values-lt.xml",
             "map": [
                 {
@@ -22,14 +28,26 @@
                 },
                 {
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-2\\files-2.1\\fe38e7fbccc61b2f36e22bf9f2234608\\res\\values-lt\\values-lt.xml",
+>>>>>>> master
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "217",
+                        "endOffsets": "464"
                     },
                     "to": {
+<<<<<<< HEAD
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "4059",
+                        "endColumns": "217",
+                        "endOffsets": "4272"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\574b71ffd26e24042ba6f66857661232\\res\\values-lt\\values.xml",
+=======
                         "startLines": "49",
                         "startColumns": "4",
                         "startOffsets": "5839",
@@ -56,6 +74,7 @@
                 },
                 {
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-2\\files-2.1\\2ebd40f1adb4e37dcbd7703eda919e8d\\res\\values-lt\\values.xml",
+>>>>>>> master
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -72,7 +91,28 @@
                     }
                 },
                 {
+<<<<<<< HEAD
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\00a9e763c74e9b0f24ca751f20a13a01\\res\\values-lt\\values-lt.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "48",
+                        "startColumns": "4",
+                        "startOffsets": "5733",
+                        "endColumns": "100",
+                        "endOffsets": "5829"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\713e21d981d7b1d61a8cd1b963d6279f\\res\\values-lt\\values-lt.xml",
+=======
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-2\\files-2.1\\f8b286da0252a9a747a193cf089ab382\\res\\values-lt\\values-lt.xml",
+>>>>>>> master
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

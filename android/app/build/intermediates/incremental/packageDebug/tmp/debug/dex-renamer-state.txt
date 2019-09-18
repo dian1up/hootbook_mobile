@@ -1,6 +1,11 @@
+<<<<<<< HEAD
+#Wed Sep 18 12:48:39 ICT 2019
+base.0=E\:\\ProjectKu\\hootbook_mobile\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+=======
 #Wed Sep 18 19:23:20 ICT 2019
 path.2=classes3.dex
 path.1=classes2.dex
+>>>>>>> master
 path.0=classes.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex

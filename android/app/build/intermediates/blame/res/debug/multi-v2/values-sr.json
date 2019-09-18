@@ -1,10 +1,28 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\project\\HootBook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sr\\values-sr.xml",
+<<<<<<< HEAD
+            "outputFile": "E:\\ProjectKu\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sr\\values-sr.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-2\\files-2.1\\2ebd40f1adb4e37dcbd7703eda919e8d\\res\\values-sr\\values.xml",
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\055a7457e3f76275a55766e0418dacd1\\res\\values-sr\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "188",
+                        "endOffsets": "435"
+                    },
+                    "to": {
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "3972",
+                        "endColumns": "188",
+                        "endOffsets": "4156"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\574b71ffd26e24042ba6f66857661232\\res\\values-sr\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -21,7 +39,34 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\713e21d981d7b1d61a8cd1b963d6279f\\res\\values-sr\\values-sr.xml",
+=======
+            "outputFile": "D:\\project\\HootBook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sr\\values-sr.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-2\\files-2.1\\2ebd40f1adb4e37dcbd7703eda919e8d\\res\\values-sr\\values.xml",
+>>>>>>> master
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "245,349,537,661,769,982,1107,1245,1372,1580,1685,1876,2001,2209,2377,2471,2562",
+                        "endColumns": "103,187,123,107,212,124,137,126,207,104,190,124,207,167,93,90,104",
+                        "endOffsets": "348,536,660,768,981,1106,1244,1371,1579,1684,1875,2000,2208,2376,2470,2561,2666"
+                    },
+                    "to": {
+                        "startLines": "29,30,31,32,33,34,35,36,38,39,40,41,42,43,44,45,46",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "2821,2929,3117,3245,3357,3570,3699,3841,4161,4369,4478,4669,4798,5006,5178,5276,5371",
+                        "endColumns": "107,187,127,111,212,128,141,130,207,108,190,128,207,171,97,94,108",
+                        "endOffsets": "2924,3112,3240,3352,3565,3694,3836,3967,4364,4473,4664,4793,5001,5173,5271,5366,5475"
+                    }
+                },
+                {
+<<<<<<< HEAD
+                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\00a9e763c74e9b0f24ca751f20a13a01\\res\\values-sr\\values-sr.xml",
+=======
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-2\\files-2.1\\b6604e662d5fd51dcebd5e63633793a5\\res\\values-sr\\values.xml",
+>>>>>>> master
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -36,6 +81,8 @@
                         "endColumns": "103",
                         "endOffsets": "5579"
                     }
+<<<<<<< HEAD
+=======
                 },
                 {
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-2\\files-2.1\\f8b286da0252a9a747a193cf089ab382\\res\\values-sr\\values-sr.xml",
@@ -87,6 +134,7 @@
                         "endColumns": "100",
                         "endOffsets": "5764"
                     }
+>>>>>>> master
                 }
             ]
         }
