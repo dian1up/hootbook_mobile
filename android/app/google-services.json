@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "95342668497",
+    "firebase_url": "https://hotbook-e83a3.firebaseio.com",
+    "project_id": "hotbook-e83a3",
+    "storage_bucket": "hotbook-e83a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95342668497:android:a0fc33db47ee40fa0eb3f0",
+        "android_client_info": {
+          "package_name": "com.hootbook_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95342668497-f41jgdu0s2us1nr3tj0h90td5crjl984.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hootbook_mobile",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "95342668497-dsd7d11ds1k7nps6di5e5736a6ed8ak1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjeastmdSf2oU_uqFP70XKpzC2INlyrKE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95342668497-dsd7d11ds1k7nps6di5e5736a6ed8ak1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

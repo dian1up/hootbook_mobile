@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">95342668497-dsd7d11ds1k7nps6di5e5736a6ed8ak1.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://hotbook-e83a3.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">95342668497</string>
+    <string name="google_api_key" translatable="false">AIzaSyCjeastmdSf2oU_uqFP70XKpzC2INlyrKE</string>
+    <string name="google_app_id" translatable="false">1:95342668497:android:a0fc33db47ee40fa0eb3f0</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCjeastmdSf2oU_uqFP70XKpzC2INlyrKE</string>
+    <string name="google_storage_bucket" translatable="false">hotbook-e83a3.appspot.com</string>
+    <string name="project_id" translatable="false">hotbook-e83a3</string>
+</resources>

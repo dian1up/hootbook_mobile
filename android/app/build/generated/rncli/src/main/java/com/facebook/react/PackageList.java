@@ -17,6 +17,8 @@ import com.hootbook_mobile.R;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 // @react-native-community/geolocation
 import com.reactnativecommunity.geolocation.GeolocationPackage;
+// react-native-firebase
+import io.invertase.firebase.RNFirebasePackage;
 // react-native-geocoder
 import com.devfd.RNGeocoder.RNGeocoderPackage;
 // react-native-gesture-handler
@@ -62,6 +64,7 @@ public class PackageList {
       new MainReactPackage(),
       new AsyncStoragePackage(),
       new GeolocationPackage(),
+      new RNFirebasePackage(),
       new RNGeocoderPackage(),
       new RNGestureHandlerPackage(),
       new MapsPackage(),
