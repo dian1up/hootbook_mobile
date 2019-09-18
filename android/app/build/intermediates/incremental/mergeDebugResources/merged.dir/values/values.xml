@@ -328,6 +328,14 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="default_web_client_id" translatable="false">95342668497-dsd7d11ds1k7nps6di5e5736a6ed8ak1.apps.googleusercontent.com</string>
+    <string name="fcm_fallback_notification_channel_label">Miscellaneous</string>
+    <string name="firebase_database_url" translatable="false">https://hotbook-e83a3.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">95342668497</string>
+    <string name="google_api_key" translatable="false">AIzaSyCjeastmdSf2oU_uqFP70XKpzC2INlyrKE</string>
+    <string name="google_app_id" translatable="false">1:95342668497:android:a0fc33db47ee40fa0eb3f0</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCjeastmdSf2oU_uqFP70XKpzC2INlyrKE</string>
+    <string name="google_storage_bucket" translatable="false">hotbook-e83a3.appspot.com</string>
     <string name="header_description" translatable="false">Heading</string>
     <string name="image_description" translatable="false">Image</string>
     <string name="imagebutton_description" translatable="false">Button, Image</string>
@@ -336,6 +344,7 @@
     <string name="menubar_description" translatable="false">Menu Bar</string>
     <string name="menuitem_description" translatable="false">Menu Item</string>
     <string name="progressbar_description" translatable="false">Progress Bar</string>
+    <string name="project_id" translatable="false">hotbook-e83a3</string>
     <string name="radiogroup_description" translatable="false">Radio Group</string>
     <string name="rn_tab_description" translatable="false">Tab</string>
     <string name="scrollbar_description" translatable="false">Scroll Bar</string>
