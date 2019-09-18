@@ -12,7 +12,7 @@ class Login extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <StatusBar translucent backgroundColor='#87baf3' barStyle='light-content' />
+                <StatusBar translucent backgroundColor='#295989' barStyle='light-content' />
                 <Image
                     source={require('../assets/images/bg4.png')}
                     style={{ marginBottom: 20 }}

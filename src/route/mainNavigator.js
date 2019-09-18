@@ -15,6 +15,7 @@ import Login from '../screens/login'
 import Register from '../screens/Register'
 import Detail from '../screens/Detail'
 import Chat from '../screens/Chat'
+import Edit from '../screens/Edit'
 // screen mitra
 import HomeMitra from '../screens/HomeMitra'
 import ProfileMitra from '../screens/ProfileMitra'
@@ -172,7 +173,8 @@ const AppStackNavigator = createStackNavigator(
     {
         Home: UserTabNavigator,
         Homemitra: MitraTabNavigator,
-        Detail
+        Detail,
+        Edit
 
     },
     {

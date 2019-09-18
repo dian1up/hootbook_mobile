@@ -12,7 +12,7 @@ class Home extends React.Component {
     }
     render() {
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <View style={styles.wrapperbgImage}>
                     <Image
                         source={require('../assets/images/bg3.png')}
@@ -76,7 +76,7 @@ class Home extends React.Component {
                                 </View>
                             </View>
                             <View style={{ justifyContent: 'center' }}>
-                                <TouchableOpacity style={{ backgroundColor: '#0fbcf9', borderRadius: 25, alignItems: 'center', paddingVertical: 12 }}>
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate('Explore') }} style={{ backgroundColor: '#0fbcf9', borderRadius: 25, alignItems: 'center', paddingVertical: 12 }}>
                                     <Text style={{ fontSize: 16, fontWeight: '700', color: '#fff' }}>Search</Text>
                                 </TouchableOpacity>
                             </View>
@@ -84,14 +84,14 @@ class Home extends React.Component {
                     </View>
                 </View>
                 {/* populer destination */}
-                <View style={{ flex: 1, marginTop: 80, padding: 20 }}>
-                    <Text style={{ fontWeight: '700', fontSize: 16, marginBottom: 10 }} >
-                        populer destination
+                <View style={{ flex: 1, marginTop: 80, paddingHorizontal: 20 }}>
+                    <Text style={{ fontWeight: '700', fontSize: 16, marginBottom: 10, color: '#636e72' }} >
+                        Where Are you go Now
                     </Text>
                     <PopulerDestination />
 
                 </View>
-            </View >
+            </ScrollView >
         )
     }
 }
