@@ -4,7 +4,7 @@ import { View, Text } from 'react-native'
 class Detail extends React.Component {
     render() {
         return (
-            <View>
+            <View style={{ backgroundColor: 'red' }}>
                 <Text>Detail</Text>
             </View>
         )

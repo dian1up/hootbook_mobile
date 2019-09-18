@@ -1,48 +1,47 @@
 import React from 'react';
-import { View, Text, Dimensions, StyleSheet } from 'react-native'
+import { View, Text, Dimensions, StyleSheet, Image, TextInput, TouchableOpacity, StatusBar } from 'react-native'
 
-// import { Asset } from 'expo-asset'
-// import { AppLoading } from 'expo';
-// import LoginPage from '../components/login'
-
-// function cacheImages() {
-//     return cacheImages.map(image => {
-//         if (typeof image === 'string') {
-//             return image.prefetch(image)
-//         } else {
-//             return Asset.fromModule(image).downloadAsync()
-//         }
-//     })
-// }
-
+const { width, height } = Dimensions.get('window')
 class Login extends React.Component {
-    // constructor() {
-    //     super()
-    //     this.state = {
-    //         isReady: false
-    //     }
-    // }
+    constructor(props) {
+        super(props)
 
-    // async _loadAssetsAsync() {
-    //     const imageAssets = cacheImages([
-    //         require('../assets/images/bg.jpg')
-    //     ])
-    //     await promises.all([...imageAssets])
-    // }
+    }
+
+
     render() {
-        // if (!this.state.isReady) {
-        //     return (
-        //         <AppLoading
-        //             startAsync={this._loadAssetsAsync}
-        //             onFinish={() => this.setState({ isReady: true })}
-        //             onError={console.warn}
-        //         />
-        //     )
-        // }
         return (
-            <View>
-                {/* <LoginPage /> */}
-                <Text>Login</Text>
+            <View style={styles.container}>
+                <StatusBar translucent backgroundColor='#87baf3' barStyle='light-content' />
+                <Image
+                    source={require('../assets/images/bg4.png')}
+                    style={{ marginBottom: 20 }}
+                />
+                <View style={{ height: height / 3, backgroundColor: '#fff' }}>
+                    <TextInput
+                        placeholder='email'
+                        keyboardType='email-address'
+                        style={styles.input}
+                    />
+                    <TextInput
+                        placeholder='password'
+                        secureTextEntry={true}
+                        style={styles.input}
+                    />
+                    <TouchableOpacity style={{ backgroundColor: '#66a1e7', borderRadius: 25, alignItems: 'center', paddingVertical: 15, elevation: 3 }}>
+                        <Text style={{ fontSize: 16, fontWeight: '700', color: '#fff' }}>Sign In</Text>
+                    </TouchableOpacity>
+                    <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'center', }}>
+                        <View>
+                            <Text style={{ color: 'grey' }}>Dont have an Account?</Text>
+                        </View>
+                        <View>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
+                                <Text style={{ color: '#295989', fontWeight: '700' }}>Sign Up</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
             </View>
         )
     }
@@ -54,7 +53,14 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'tomato',
-        marginTop: 20
+        justifyContent: 'flex-end'
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: 'grey',
+        width: width / 1.5,
+        marginBottom: 10,
+        borderRadius: 25,
+        paddingLeft: 20
     }
 })

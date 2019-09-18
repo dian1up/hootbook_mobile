@@ -70,10 +70,10 @@ const UserTabNavigator = createMaterialTopTabNavigator(
     },
     {
         tabBarPosition: 'bottom',
-        swipeEnabled: true,
+        swipeEnabled: false,
         animationEnabled: false,
         tabBarOptions: {
-            activeTintColor: '#000',
+            activeTintColor: '#0fbcf9',
             inactiveTintColor: 'grey',
             upperCaseLabel: false,
             labelStyle: {
@@ -170,8 +170,9 @@ const MitraTabNavigator = createMaterialTopTabNavigator(
 
 const AppStackNavigator = createStackNavigator(
     {
-        // Home: UserTabNavigator,
+        Home: UserTabNavigator,
         Homemitra: MitraTabNavigator,
+        Detail
 
     },
     {
@@ -187,7 +188,8 @@ const AuthStack = createStackNavigator({
 
 const Apps = createSwitchNavigator({
     AuthStack,
-    AppStackNavigator
+    AppStackNavigator,
+
 }, {
     initialRouteName: 'AppStackNavigator',
 })
