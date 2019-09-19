@@ -11,7 +11,7 @@ export default class ChatRoom extends React.Component{
     super()
     this.state = {
       currentUserData:{},
-      users:[],
+      hotels:[],
     }
   }
   decodeJwt = (inputJwt) => {
@@ -24,12 +24,11 @@ export default class ChatRoom extends React.Component{
       )
       .then(res => res) // already an object. read below, exp key note
       .catch(console.error);
-}
-  onChangeChatList = snapshot => {
-    let users = snapshot.get('userList')
-    this.setState({users})
   }
-
+  onChangeChatList = snapshot => {
+    let hotels = snapshot.get('hotelList')
+    this.setState({hotels})
+  }
   componentDidMount(){
     AsyncStorage.getItem('token',async (err, result)=>{
       if (!err) {
@@ -50,17 +49,13 @@ export default class ChatRoom extends React.Component{
     })
   }
 
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-
   render(){
-    let currentUser = 'hotel'
-    const {currentUserData} = this.state
-    let hotel = {
+    let currentUser = 'user'
+    const { currentUserData } = this.state
+    let user = {
       _id: currentUserData.email,
-      name: currentUserData.company,
-      avatar: currentUserData.image || 'https://placeimg.com/140/140/any'
+      name: currentUserData.name,
+      avatar: currentUserData.image || 'https://placeimg.com/140/140/any',
     }
     return (
       <FlatList
@@ -72,15 +67,15 @@ export default class ChatRoom extends React.Component{
               <Image
                 source={{uri:item.avatar}}
                 style={styles.avatarImageStyle}
-                onPress={()=>{this.props.navigation.navigate('Chat', {hotel,user:item,currentUser})}} 
+                onPress={()=>{this.props.navigation.navigate('Chat', {hotel:item,user,currentUser})}} 
               />
               <View style={styles.contentColor}>
-                <Text onPress={()=>{this.props.navigation.navigate('Chat', {hotel,user:item,currentUser})}}  style={styles.rowText}>{item.name}</Text>
+                <Text onPress={()=>{this.props.navigation.navigate('Chat', {hotel:item,user,currentUser})}}  style={styles.rowText}>{item.name}</Text>
               </View>
           </TouchableNativeFeedback>
           :<View></View>
         )}
-        data={this.state.users}
+        data={this.state.hotels}
         keyExtractor={(item)=> item !== null && item !== undefined ? item._id:item}
         style={styles.list}
       />
