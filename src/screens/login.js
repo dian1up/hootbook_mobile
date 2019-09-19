@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Dimensions, StyleSheet, Image, TextInput, TouchableOpacity, StatusBar, Picker } from 'react-native'
+import { View, Text, Dimensions, StyleSheet, Image, TextInput, TouchableOpacity, StatusBar, Picker, Modal, ActivityIndicator } from 'react-native'
 import Axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
 import config from '../config/config';
@@ -62,7 +62,7 @@ class Login extends React.Component {
                         if(!err){
                             const home = this.state.loginAs === 'partner' ? 'Homemitra' : 'Homeuser'
                             console.log(home);
-                            
+                            this.setState({isLoading:false})
                             this.props.navigation.navigate(home)
                         }
                         else console.log(err)
@@ -80,9 +80,10 @@ class Login extends React.Component {
 }
 
     render() {
-        
+        const data=1
         return (
             <View style={styles.container}>
+
                 <StatusBar translucent backgroundColor='#87baf3' barStyle='light-content' />
                 <Image
                     source={require('../assets/images/bg4.png')}
@@ -129,12 +130,23 @@ class Login extends React.Component {
                             <Text style={{ color: 'grey' }}>Dont have an Account?</Text>
                         </View>
                         <View>
-                            <TouchableOpacity style={{zIndex:1}} onPress={() => this.props.navigation.navigate('RegisterUser')}>
+                            <TouchableOpacity style={{zIndex:1}} onPress={() => this.props.navigation.navigate('RegisterMitra')}>
                                 <Text style={{ color: '#295989', fontWeight: '700' }}>Sign Up</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
                 </View>
+{/* ==================================LOADING========================================================================== */}
+                <Modal
+                        animationType="fade"
+                        transparent={true}
+                        visible={this.state.isLoading}
+                    >
+                        <View style={{backgroundColor:'#f9f9f9', flex:1, opacity:0.7,alignItems:'center',justifyContent:'center'}}>
+                            <ActivityIndicator size="large" color="#0000ff" />
+                        </View>
+                        
+                </Modal>
             </View>
         )
     }
