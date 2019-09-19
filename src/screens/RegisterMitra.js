@@ -11,6 +11,9 @@ import {
     StyleSheet,
     ScrollView,
 } from 'react-native';
+import MapView from 'react-native-maps';
+import Maps from './Maps'
+
 
 const { width, height } = Dimensions.get('window')
 
@@ -83,14 +86,10 @@ export default class Signup extends Component {
                         maxLength={32}
                         onChangeText={this.changerValue('password')}
                         onSubmitEditing={()=> this.formData.maps.focus()}/>
-                    <TextInput style={styles.input}
-                        placeholder="Maps"
-                        selectionColor="#fff"
-                        secureTextEntry={true}
-                        value={this.state.formData.maps}
-                        maxLength={32}
-                        onChangeText={this.changerValue('maps')}
-                        onSubmitEditing={()=> this.formData.maps.focus()}/>
+                    <View style={styles.maps}>
+                        <Text>Address</Text>
+                        <Maps />
+                    </View>
                     
                     <TouchableOpacity 
                         style={{ 
@@ -151,5 +150,10 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         borderRadius: 25,
         paddingLeft: 20
+    },
+    maps: {
+        height: 130,
+        paddingBottom: 10,
+        borderRadius: 25,
     }
 })
