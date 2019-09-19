@@ -1,121 +1,161 @@
 import React, { Component } from 'react';
-import { 
-    Text, 
-    View, 
-    TouchableOpacity,
-    Image, 
-    TextInput,
-    Alert,
-    Dimensions,
-    StatusBar,
-    StyleSheet,
-} from 'react-native';
+import { Dimensions, ScrollView, Image, Text, View, ImageBackground, TouchableOpacity, StyleSheet, AsyncStorage, Header } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
-const { width, height } = Dimensions.get('window')
-
-export default class Signup extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            formData: {
-                    name: '',
-                    email: '',
-                    password: '',  
-                    },
-            isLoading: false,
-        }
+class Profile extends Component {
+    state = {
     }
-
-    submit = () => {
-        Alert.alert('SIGN UP');
+    goBack = () => {
+        this.props.navigation.goBack()
     }
-
-    changerValue = field => value => { this.setState({[field]:value})}
-
     render() {
-        return(
+        // const address = this.state.address
+        return (
             <View style={styles.container}>
-                <StatusBar translucent backgroundColor='#87baf3' barStyle='light-content' />
-                <Image
-                    source={require('../assets/images/bg4.png')}
-                    style={{ marginBottom: 20, }}
-                />
-                    <TextInput style={styles.input}
-                        placeholder="Name"
-                        selectionColor="#fff"
-                        maxLength={64}
-                        onChangeText={this.changerValue('name')}
-                        onSubmitEditing={()=> this.formData.email.focus()}/>
-                    <TextInput style={styles.input}
-                        placeholder="Email"
-                        selectionColor="#fff"
-                        keyboardType="email-address"
-                        maxLength={64}
-                        onChangeText={this.changerValue('email')}
-                        onSubmitEditing={()=> this.formData.company.focus()}/>
-                    <TextInput style={styles.input}
-                        placeholder="Password"
-                        selectionColor="#fff"
-                        secureTextEntry={true}
-                        maxLength={32}
-                        onChangeText={this.changerValue('password')}
-                        onSubmitEditing={()=> this.formData.password.focus()}/>
-                    <TouchableOpacity 
-                        style={{ 
-                            backgroundColor: '#66a1e7', 
-                            borderRadius: 25, 
-                            alignItems: 'center',
-                            width: width / 1.5, 
-                        
-                            paddingVertical: 15, elevation: 3 }}
-                            disabled={this.state.isLoading}
-                            onPress={this.submit}
-                        >
-                            <Text style={{ fontSize: 16, fontWeight: '700', color: '#fff' }}>{this.state.isLoading ? 'Loading':'Sign Up'}</Text>
+                <View style={{ flexDirection: 'row', backgroundColor: '#66a1e7', elevation: 5, height: 60, marginTop: 20, alignItems: 'center', paddingLeft: 20 }}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image source={require('../assets/Icons/back.png')} style={{ marginTop: 5 }} />
                     </TouchableOpacity>
-                    <TouchableOpacity 
-                        style={{ 
-                            backgroundColor: '#66a1e7', 
-                            borderRadius: 25, 
-                            alignItems: 'center',
-                            width: width / 1.5, 
-                            marginTop:10,
-                            paddingVertical: 15, elevation: 3 }}
-                            disabled={this.state.isLoading}
-                            onPress={()=>this.props.navigation.navigate('RegisterMitra')}
-                        >
-                            <Text style={{ fontSize: 16, fontWeight: '700', color: '#fff' }}>Sign Up As Partner</Text>
+                    <Text style={{ textAlign: 'center', color: '#fff', fontSize: 18, fontWeight: 'bold', marginLeft: 25 }}>My Profile</Text>
+                </View>
+                <View style={styles.conImage}>
+                    <Image style={styles.image} source={require('../assets/images/bandung.jpg')} />
+                    <TouchableOpacity style={{ position: 'absolute', bottom: 20, right: '30%', width: 40, height: 40, backgroundColor: '#66a1e7', borderRadius: 25, justifyContent: 'center', alignItems: 'center' }}>
+                        <Image source={require('../assets/Icons/photo-camera.png')} />
                     </TouchableOpacity>
+                </View>
+                <View style={styles.inputContainer}>
 
-                    <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'center', }}>
-                        <View>
-                            <Text style={{ color: 'grey' }}>Already have an Account?</Text>
+                    <View style={styles.wrapper}>
+                        <View style={styles.wrapperIcon}>
+                            <Image source={require('../assets/Icons/man.png')} />
                         </View>
-                        <View>
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
-                                <Text style={{ color: '#295989', fontWeight: '700' }}>Sign In</Text>
-                            </TouchableOpacity>
+
+                        <View style={{ flex: 1, }}>
+                            <Text style={styles.titleText}>Username </Text>
+                            <Text style={styles.name}>pandri</Text>
                         </View>
                     </View>
+
+                    <View style={styles.wrapper}>
+                        <View style={styles.wrapperIcon}>
+                            <Image source={require('../assets/Icons/envelope.png')} />
+                        </View>
+                        <View style={{ flex: 1, }}>
+                            <Text style={styles.titleText}>Email</Text>
+                            <Text style={styles.name}>email</Text>
+
+                        </View>
+                    </View>
+
+                    <View style={styles.wrapper}>
+                        <View style={styles.wrapperIcon}>
+                            <Image style={styles.place} source={require('../assets/Icons/history-clock-button.png')} />
+                        </View>
+                        <View style={{ flex: 1, }}>
+                            <Text style={styles.titleText}>History</Text>
+                        </View>
+                    </View>
+
+                    <View style={{ flexDirection: 'row' }}>
+                        <TouchableOpacity style={styles.logoutButton} onPress={() => { this.props.navigation.navigate('Edit') }} >
+                            <Text style={[styles.buttonText]}>edit</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.logoutButton} >
+                            <Text style={[styles.buttonText]}>LOGOUT</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                </View>
+
             </View>
         )
     }
 }
-
-
+export default withNavigation(Profile);
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        justifyContent: 'flex-end'
+        width: Dimensions.get('screen').width,
+        height: Dimensions.get('screen').height,
     },
-    input: {
-        borderWidth: 1,
-        borderColor: 'grey',
-        width: width / 1.5,
-        marginBottom: 10,
-        borderRadius: 25,
-        paddingLeft: 20
+    conImage: {
+        width: Dimensions.get('screen').width,
+        height: Dimensions.get('screen').height * 0.3,
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+    },
+    image: {
+        width: '48%',
+        height: '90%',
+        borderRadius: 110,
+        borderWidth: 5,
+        borderColor: 'white',
+        position: 'relative'
+    },
+    conText: {
+        width: Dimensions.get('screen').width,
+        height: Dimensions.get('screen').height * 0.6,
+        backgroundColor: 'white',
+        padding: 10,
+        backgroundColor: 'tomato'
+    },
+    name: {
+        fontSize: 16,
+    },
+    address: {
+        fontSize: 14,
+    },
+    conAdd: {
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+        marginVertical: 10,
+
+    },
+    place: {
+        width: 20,
+        height: 20
+    },
+    status: {
+        fontSize: 16,
+        color: '#6a717a'
+    },
+    logoutButton: {
+        backgroundColor: '#66a1e7',
+        paddingVertical: 15,
+        marginTop: 20,
+        marginHorizontal: 5,
+        elevation: 5,
+        flex: 1
+    },
+    buttonText: {
+        textAlign: 'center',
+        color: '#FFFFFF',
+        fontWeight: '700'
+    },
+    inputContainer: {
+        paddingHorizontal: 20,
+        paddingVertical: 20,
+        width: Dimensions.get('screen').width,
+        height: Dimensions.get('screen').height * 0.6,
+        backgroundColor: 'white',
+    },
+    wrapper: {
+        flexDirection: 'row',
+        borderBottomColor: '#dfe4ea',
+        borderBottomWidth: 1,
+        marginBottom: 5,
+        paddingVertical: 5
+    },
+    wrapperIcon: {
+        justifyContent: 'center',
+        width: '20%'
+    },
+    titleText: {
+        marginBottom: 5,
+        color: '#6a717a'
     }
-})
+
+});
