@@ -16,8 +16,10 @@ class Chat extends React.Component {
             name: 'user',
             avatar: 'https://firebasestorage.googleapis.com/v0/b/yu-chat.appspot.com/o/User.png?alt=media&token=79e7b969-046c-4657-9558-b65a1812e388',
         }
+        const currentUser = 'hotel'
         // const hotel = props.navigation.getParam('hotel')
         // const user = props.navigation.getParam('user')
+        // const currentUser = props.navigation.getParam('currentUser')
         const chatRef = firebase
             .firestore()
             .collection('Messages')
@@ -29,70 +31,65 @@ class Chat extends React.Component {
             user,
             hotel,
             chatRef,
+            currentUser,
         }
     }
-    componentWillMount() {
-        this.setState({
-            messages: [
-                {
-                    _id: 1,
-                    text: 'Hello developer',
-                    createdAt: new Date(),
-                    user: {
-                        _id: 2,
-                        name: 'React Native',
-                        avatar: 'https://placeimg.com/140/140/any',
-                    },
-                },
-            ],
-        })
+
+    componentDidMount(){
+        this.unsubsribe = this.state.chatRef.onSnapshot(this.onChatUpdate)
+    }
+
+    componentWillUnmount(){
+        this.unsubsribe()
     }
     
+    onChatUpdate = (snapshot)=>{
+        console.log(snapshot)
+        let messages = snapshot.docChanges.map(changes => {
+            let data = changes.doc.data()
+            data.createdAt = new Date(data.createdAt.seconds * 1000)
+            return data
+          })
+          let appendedMessage =  GiftedChat.append(this.state.messages, messages)
+          appendedMessage.sort((a, b)=>b.createdAt.getTime() - a.createdAt.getTime())
+          this.setState({messages:appendedMessage})
+    }
+
     onSend(messages = []) {
         let message = messages[0]
-
-        this.setState(previousState => ({
-            messages: GiftedChat.append(previousState.messages, messages),
-        }))
-    }
-    openPartnerProfile= () => {
-        
+        this.state.chatRef.doc(message._id).set(message)
     }
     render() {
         const { name, badgeCount, color, size } = this.props
+        const currentUser = this.state.currentUser === 'hotel' ? this.state.hotel : this.state.user
+        const targetUser = this.state.currentUser === 'hotel' ? this.state.user : this.state.userthis.state.hotel 
         return (
-            <View style={{flex: 1}}>
+            <React.Fragment>
                 <Header style={{backgroundColor:'#2196f3'}}>
-                {
-                // Object.keys(this.state.targetUser).length !== 0 ? 
-                //     <React.Fragment>
-                //     <Left>
-                //         <Image 
-                //         source={{uri:this.state.targetUser.photoURL}} 
-                //         style={{width:40, height:40}} 
-                //         />
-                //     </Left>
-                //     <Body>
-                //         <Text 
-                //         style={{fontSize:20, color:'white'}} 
-                //         onPress={this.openFriendProfile} 
-                //         >
-                //         {this.state.targetUser.username}
-                //         </Text>
-                //     </Body>
-                //     <Right/>
-                //     </React.Fragment>
-                // :
-                // <React.Fragment><Spinner color='black' /></React.Fragment>
-                }
+                    <Left>
+                        <Image 
+                        source={{uri:targetUser.avatar}} 
+                        style={{width:40, height:40}} 
+                        />
+                    </Left>
+                    <Body>
+                        <Text 
+                        style={{fontSize:20, color:'white'}} 
+                        >
+                        {targetUser.name}
+                        </Text>
+                    </Body>
+                    <Right/>
                 </Header>
-                <GiftedChat
-                messages={this.state.messages}
-                onSend={messages => this.onSend(messages)}
-                onPressAvatar={this.openPartnerProfile}
-                user={this.state.currentUser}
-                />
-            </View>
+                <View style={{flex: 1}}>
+                    <GiftedChat
+                        showUserAvatar={false}
+                        messages={this.state.messages}
+                        onSend={messages => this.onSend(messages)}
+                        user={currentUser}
+                    />
+                </View>
+            </React.Fragment>
         )
     }
 }
