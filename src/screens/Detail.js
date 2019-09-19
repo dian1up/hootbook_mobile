@@ -4,6 +4,9 @@ import { View, Text, StyleSheet, Dimensions, ScrollView, Image, TouchableOpacity
 import { SliderBox } from 'react-native-image-slider-box'
 import MapView, { Marker } from 'react-native-maps'
 import DatePicker from 'react-native-datepicker'
+import AsyncStorage from '@react-native-community/async-storage';
+import config from '../config/config';
+import JsonWebToken from "react-native-pure-jwt";
 
 const { width, height } = Dimensions.get('window')
 class Detail extends React.Component {
@@ -23,15 +26,53 @@ class Detail extends React.Component {
                 latitudeDelta: 0.00922 * 1.5,
                 longitudeDelta: 0.00421 * 1.5
             },
-            date: new Date()
+            date: new Date(),
+            currentUserData:{},
         };
+    }
+    decodeJwt = (inputJwt) => {
+      return JsonWebToken.decode(
+          inputJwt, // the token
+          config.secret, // the secret
+          {
+            skipValidation: true // to skip signature and exp verification
+          }
+        )
+        .then(res => res) // already an object. read below, exp key note
+        .catch(console.error);
+    }
+    componentDidMount(){
+      AsyncStorage.getItem('token',async (err, result)=>{
+        if (!err) {
+            let decode = await this.decodeJwt(result.split(' ')[1])
+            console.log('data = ', decode.payload)
+            this.setState({currentUserData:decode.payload})
+  
+        } else {
+            console.warn(err)
+        }
+      })
+    }
+    onPressMessage = () => {
+        const { data, currentUserData } = this.state
+        const hotel = {
+            _id: data.email,
+            name: data.company,
+            avatar: data.image || 'https://placeimg.com/140/140/any',
+        }
+        const user = {
+            _id: currentUserData.email,
+            name: currentUserData.name,
+            avatar: data.image || 'https://placeimg.com/140/140/any',
+        }
+        this.props.navigation.navigate('Chat', {hotel,user,currentUser:'user'})
     }
     goBack = () => {
         this.props.navigation.goBack()
     }
     render() {
         const { data } = this.state
-        console.warn('desc', data.description)
+        console.warn('data', data)
         return (
             <View style={styles.container}>
                 <View style={{
@@ -170,7 +211,7 @@ class Detail extends React.Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <TouchableOpacity style={{ backgroundColor: '#66a1e7', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                        <TouchableOpacity onPress={this.onPressMessage} style={{ backgroundColor: '#66a1e7', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
                             <Text style={{ color: '#fff', fontSize: 18, fontWeight: '700' }}>Message</Text>
                         </TouchableOpacity>
                     </View>
