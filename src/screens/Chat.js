@@ -46,14 +46,15 @@ class Chat extends React.Component {
             let data = changes.doc.data()
             data.createdAt = new Date(data.createdAt.seconds * 1000)
             return data
-          })
-          let appendedMessage =  GiftedChat.append(this.state.messages, messages)
-          appendedMessage.sort((a, b)=>b.createdAt.getTime() - a.createdAt.getTime())
-          this.setState({messages:appendedMessage})
+        })
+        let appendedMessage =  GiftedChat.append(this.state.messages, messages)
+        appendedMessage.sort((a, b)=>b.createdAt.getTime() - a.createdAt.getTime())
+        this.setState({messages:appendedMessage})
     }
 
     onSend= async (messages = []) => {
         let message = messages[0]
+        // message.createdAt = firebase.firestore.FieldValue.serverTimestamp()
         await this.state.chatRef.doc(message._id).set(message)
         if(this.state.currentUser === 'user'){
             let hotelInbox = await this.state.hotelRef.get()
