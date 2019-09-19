@@ -1,48 +1,23 @@
 import React from 'react'
-import { ScrollView, View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { ScrollView, View, Text, Image, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { withNavigation } from 'react-navigation'
+import Axios from 'axios'
+import config from '../config/config'
 
 class PopulerDestination extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            hotels: [
-                {
-                    id: 1,
-                    name: 'Homestay Fuad',
-                    frice: 200000,
-                    status: 'Available',
-                    address: 'jln kali-urang pogung baru yogyakarta',
-                    type: 'single'
-
-                },
-                {
-                    id: 2,
-                    name: 'Homestay dian',
-                    frice: 250000,
-                    status: 'Available',
-                    address: 'jln kali-urang pogung baru yogyakarta',
-                    type: 'Double'
-
-                },
-                {
-                    id: 3,
-                    name: 'Homestay syahid',
-                    frice: 300000,
-                    status: 'Available',
-                    address: 'jln kali-urang pogung baru yogyakarta',
-                    type: 'single'
-
-                }
-            ]
+            isLoading: false
         }
     }
+
     render() {
-        console.warn(this.state.hotels)
+        console.warn('pindah', this.props.data)
         return (
             <ScrollView showsVerticalScrollIndicator={false}>
-                {this.state.hotels.map((item, index) =>
-                    <TouchableOpacity style={styles.wrapper} key={index} onPress={() => this.props.navigation.navigate('Detail')}>
+                {this.props.data.map((item, index) =>
+                    <TouchableOpacity style={styles.wrapper} key={index} onPress={() => this.props.navigation.navigate('Detail', { item })}>
                         <View style={styles.wrapperImg}>
                             <Image
                                 source={require('../assets/images/jakarta.jpg')}
@@ -51,13 +26,21 @@ class PopulerDestination extends React.Component {
                         </View>
                         <View style={styles.wrapperContent}>
                             <View style={styles.wrapperTop}>
-                                <Text style={styles.HotelName}>{item.name}</Text>
+                                <Text style={styles.HotelName}>{item.company}</Text>
                                 <Text style={styles.address} >{item.address}</Text>
                             </View>
                             <View style={styles.wrapperBottom}>
-                                <Text style={styles.prices}>{item.frice} <Text style={{ color: '#636e72', fontWeight: 'normal', fontSize: 12 }}> /kamar/malam</Text></Text>
+                                <Text style={styles.prices}>{item.price} <Text style={{ color: '#636e72', fontWeight: 'normal', fontSize: 12 }}> /kamar/malam</Text></Text>
                                 {/* <Text style={styles.status}>Available</Text> */}
-                                <Text style={{ color: '#636e72' }}>type: <Text style={styles.roomType}>{item.type}</Text></Text>
+                                {item.room_type === 1 ?
+                                    <Text style={{ color: '#636e72' }}>type: <Text style={styles.roomType}>
+                                        <Image source={require('../assets/Icons/single-bed.png')} />
+                                        {item.room_type} orang/kamar</Text></Text> :
+                                    <Text style={{ color: '#636e72' }}>type: <Text style={styles.roomType}>
+                                        <Image source={require('../assets/Icons/single-bed.png')} />
+                                        {item.room_type} orang/kamar</Text></Text>
+                                }
+
                             </View>
 
                         </View>
@@ -66,6 +49,7 @@ class PopulerDestination extends React.Component {
 
 
             </ScrollView >
+
         )
     }
 }
