@@ -21,6 +21,7 @@ import HomeMitra from '../screens/HomeMitra'
 import ProfileMitra from '../screens/ProfileMitra'
 import HistoryMitra from '../screens/HistoryMitra'
 import ChatListMitra from '../screens/ChatlistMitra'
+import ChatListUser from '../screens/ChatlistUser'
 
 
 
@@ -47,8 +48,8 @@ const UserTabNavigator = createMaterialTopTabNavigator(
                 ),
             },
         },
-        Chat: {
-            screen: Chat,
+        ChatListUser: {
+            screen: ChatListUser,
             navigationOptions: {
                 tabBarIcon: ({ tintColor }) => (
                     <Image
@@ -174,7 +175,7 @@ const AppStackNavigator = createStackNavigator(
         Homeuser: UserTabNavigator,
         Detail,
         Edit,
-
+        Chat,
     },
     {
         initialRouteName:'Homeuser',

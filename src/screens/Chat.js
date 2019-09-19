@@ -6,30 +6,27 @@ import { Header, Left, Body, Spinner, Right  } from 'native-base';
 class Chat extends React.Component {
     constructor(props) {
         super(props)
-        const hotel = {
-            _id:'hotel@gmail.com',
-            name:'hotel',
-            avatar:'https://placeimg.com/140/140/any'
-        }
-        const user = {
-            _id: 'user@gmail.com',
-            name: 'user',
-            avatar: 'https://firebasestorage.googleapis.com/v0/b/yu-chat.appspot.com/o/User.png?alt=media&token=79e7b969-046c-4657-9558-b65a1812e388',
-        }
-        const currentUser = 'hotel'
-        // const hotel = props.navigation.getParam('hotel')
-        // const user = props.navigation.getParam('user')
-        // const currentUser = props.navigation.getParam('currentUser')
-        const chatRef = firebase
-            .firestore()
-            .collection('Messages')
-            .doc(hotel._id)
-            .collection(user._id)
+        const hotel = props.navigation.getParam('hotel')
+        const user = props.navigation.getParam('user')
+        const currentUser = props.navigation.getParam('currentUser')
+        console.log(hotel, user, currentUser)
+        const hotelRef = firebase
+        .firestore()
+        .collection('Messages')
+        .doc(hotel._id)
+        const userRef = firebase
+        .firestore()
+        .collection('Messages')
+        .doc(user._id)
+
+        const chatRef = hotelRef.collection(user._id)
             
         this.state = {
             messages: [],
             user,
             hotel,
+            hotelRef,
+            userRef,
             chatRef,
             currentUser,
         }
@@ -55,14 +52,29 @@ class Chat extends React.Component {
           this.setState({messages:appendedMessage})
     }
 
-    onSend(messages = []) {
+    onSend= async (messages = []) => {
         let message = messages[0]
-        this.state.chatRef.doc(message._id).set(message)
+        await this.state.chatRef.doc(message._id).set(message)
+        if(this.state.currentUser === 'user'){
+            let hotelInbox = await this.state.hotelRef.get()
+            let userList = hotelInbox.get('userList') || []
+            if( !userList.find(user => user._id === message.user._id) ){
+                userList.push(message.user)
+                this.state.hotelRef.set({userList})
+            }
+
+            let userInbox = await this.state.userRef.get()
+            let hotelList = userInbox.get('hotelList') || []
+            if( !hotelList.find(hotel => hotel._id == this.state.hotel._id) ){
+                hotelList.push(this.state.hotel)
+                this.state.userRef.set({hotelList})
+            }
+        }
     }
     render() {
         const { name, badgeCount, color, size } = this.props
         const currentUser = this.state.currentUser === 'hotel' ? this.state.hotel : this.state.user
-        const targetUser = this.state.currentUser === 'hotel' ? this.state.user : this.state.userthis.state.hotel 
+        const targetUser = this.state.currentUser === 'hotel' ? this.state.user : this.state.hotel 
         return (
             <React.Fragment>
                 <Header style={{backgroundColor:'#2196f3'}}>
