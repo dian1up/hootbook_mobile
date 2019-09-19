@@ -2,8 +2,9 @@ import React from 'react';
 import { View, Text, Dimensions, StyleSheet, Image, TextInput, TouchableOpacity, StatusBar, Picker } from 'react-native'
 import Axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
-
 import config from '../config/config';
+import Jwt from "react-native-pure-jwt";
+
 const { width, height } = Dimensions.get('window')
 class Login extends React.Component {
     constructor(props) {
@@ -19,9 +20,36 @@ class Login extends React.Component {
     }
 
     handleChange = (name, text) => {
+        
         let formData = this.state.formData
         formData[name] = text
         this.setState({formData})
+}
+    decodeJwt = (inputJwt) => {
+        return Jwt.decode(
+            inputJwt, // the token
+            config.secret, // the secret
+            {
+              skipValidation: true // to skip signature and exp verification
+            }
+          )
+          .then(res => res) // already an object. read below, exp key note
+          .catch(console.error);
+    }
+
+
+    componentDidMount=  ()=>{
+        AsyncStorage.getItem('token',async (err, result)=>{
+            if (!err) {
+                let decode = await this.decodeJwt(result.split(' ')[1])
+                console.warn('data = ', decode)
+                console.warn('jwt = ', result.split(' ')[1])
+                let home = decode.payload.level === 'user' ? 'Homeuser' : 'Homemitra'
+                this.props.navigation.navigate(home)
+            } else {
+                console.warn(err)
+            }
+        })
     }
 
     handleSubmit = () => {
@@ -49,9 +77,10 @@ class Login extends React.Component {
         }else{
             console.warn('login as empty')
         }
-    }
+}
 
     render() {
+        
         return (
             <View style={styles.container}>
                 <StatusBar translucent backgroundColor='#87baf3' barStyle='light-content' />
@@ -61,7 +90,7 @@ class Login extends React.Component {
                 />
                 <View style={{  backgroundColor: '#fff', marginBottom:50}}>
                     <TextInput
-                        placeholder='email'
+                        placeholder='emailawdawdaw'
                         keyboardType='email-address'
                         style={styles.input}
                         onChangeText={(text => this.handleChange('email', text))}
