@@ -7,8 +7,8 @@ import {
     TouchableOpacity,
 } from 'react-native'
 
-// import Register from './src/screens/Register'
-// import Login from './src/screens/login'
+// import ProfileMitra from './src/screens/EditProfileMitra'
+import Login from './src/screens/login'
 import AppContainer from './src/route/mainNavigator'
 
 
@@ -17,7 +17,7 @@ export default class App extends Component {
         return (
             <Fragment>
                 {/* <Login /> */}
-                {/* <Register /> */}
+                {/* <ProfileMitra /> */}
                 <AppContainer />
             </Fragment>
         )
