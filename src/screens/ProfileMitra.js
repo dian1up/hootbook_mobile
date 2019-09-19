@@ -1,7 +1,30 @@
 import React from 'react'
-import { View, Text, StyleSheet, Dimensions, Image, ScrollView } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage';
+import { View, Text, StyleSheet, Dimensions, Image, ScrollView, TouchableOpacity, Modal, ActivityIndicator } from 'react-native'
 const { height, width } = Dimensions.get('window')
 class ProfileMitra extends React.Component {
+
+    constructor(){
+        super()
+
+        this.state={
+            isLoading:false,
+        }
+    }
+
+    logOut = () => {
+        this.setState({isLoading:true})
+        AsyncStorage.clear((err)=>{
+            if (!err) {
+                this.setState({isLoading:false})
+                this.props.navigation.navigate('Login')
+            } else {
+                this.setState({isLoading:false})
+                Alert.alert('Error',err)
+            }
+        })
+    }
+
     render() {
         return (
             <View style={{flex:1}}>
@@ -20,7 +43,15 @@ class ProfileMitra extends React.Component {
                     <Text style={{alignSelf:'center', fontSize:22, fontFamily:'Roboto', marginTop:10}}>NTech Malang</Text>
                     <Text style={{alignSelf:'center', fontSize:15, fontFamily:'Roboto', marginTop:5}}>Hotel</Text>
 
-                        <Image source={require('../assets/images/edit.png')} style={{ height:50, width:50, resizeMode:'stretch', position:'absolute', bottom:'5%', left:'5%'}}/>
+                       
+                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('EditProfileMitra')}  style={{ height:50, width:50, position:'absolute', bottom:'5%', left:'5%'}}>
+                        <Image source={require('../assets/images/edit.png')} style={{ height:50, width:50, resizeMode:'stretch',}}/>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={()=>this.logOut()} style={{ height:50, width:50, position:'absolute', bottom:'5%', right:'5%'}}>
+                        <Image source={require('../assets/images/power-button-off.png')} style={{ height:50, width:50, resizeMode:'stretch',}}/>
+                    </TouchableOpacity>
+                        
                        
 
                 </View>
@@ -57,6 +88,17 @@ class ProfileMitra extends React.Component {
 
                 </ScrollView>
                 </View>
+{/* ==================================LOADING========================================================================== */}
+                <Modal
+                        animationType="fade"
+                        transparent={true}
+                        visible={this.state.isLoading}
+                    >
+                        <View style={{backgroundColor:'#f9f9f9', flex:1, opacity:0.7,alignItems:'center',justifyContent:'center'}}>
+                            <ActivityIndicator size="large" color="#0000ff" />
+                        </View>
+                        
+                </Modal>
             </View>
         )
     }

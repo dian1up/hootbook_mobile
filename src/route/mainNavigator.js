@@ -19,6 +19,7 @@ import Chat from '../screens/Chat'
 // screen mitra
 import HomeMitra from '../screens/HomeMitra'
 import ProfileMitra from '../screens/ProfileMitra'
+import EditProfileMitra from '../screens/EditProfileMitra'
 import HistoryMitra from '../screens/HistoryMitra'
 import ChatListMitra from '../screens/ChatlistMitra'
 import ChatListUser from '../screens/ChatlistUser'
@@ -176,8 +177,14 @@ const AppStackNavigator = createStackNavigator(
         Detail,
         Edit,
         Chat,
+        EditProfileMitra:{
+            screen:EditProfileMitra,
+            navigationOptions:{
+                title:'Edit Profile'
+            }
+        },
     },
-    {
+    {   
         initialRouteName:'Homeuser',
         headerMode: 'none',
     },

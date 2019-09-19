@@ -140,7 +140,7 @@ export default class EditProfileMitra extends React.Component{
                     <TouchableOpacity 
                         style={{ backgroundColor: '#66a1e7', 
                         borderRadius: 25, 
-                        paddingVertical: 15, elevation: 3, marginTop:10, marginHorizontal:20 }}
+                        paddingVertical: 15, elevation: 3, marginTop:10, marginHorizontal:20, marginBottom:10 }}
                         >
                             <Text style={{ fontSize: 16, fontWeight: '700', color: '#fff', alignSelf:'center' }}>CANCEL</Text>
                     </TouchableOpacity>
