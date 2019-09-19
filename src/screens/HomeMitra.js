@@ -11,6 +11,7 @@ import {
   ScrollView
 } from 'react-native';
 
+
 export default class Craigslist extends Component {
 
   constructor(props) {
@@ -37,6 +38,7 @@ export default class Craigslist extends Component {
 
   render() {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <FlatList 
           style={styles.contentList}
@@ -59,6 +61,19 @@ export default class Craigslist extends Component {
             </TouchableOpacity>
           )}}/>
       </View>
+      <View style={styles.container}>
+      <TouchableOpacity style={styles.card} onPress={() => this.props.navigation.navigate("HomeMitra") }>
+              {/* <Image style={styles.image} source={{uri: add}}/> */}
+              <Image style={styles.image} source={require('../assets/images/add.png')} />
+              <View style={styles.cardContent}>
+                <Text style={styles.name}>ADD SERVICES</Text>
+                <TouchableOpacity style={styles.followButton} onPress={() => this.props.navigation.navigate("HomeMitra")}>
+                  <Text style={styles.followButtonText}>Explore now</Text>  
+                </TouchableOpacity>
+              </View>
+      </TouchableOpacity>
+      </View>
+      </ScrollView>
     );
   }
 }
@@ -79,7 +94,6 @@ const styles = StyleSheet.create({
   image:{
     width:90,
     height:90,
-    borderRadius:45,
     borderWidth:2,
     borderColor:"#ebf0f7"
   },
