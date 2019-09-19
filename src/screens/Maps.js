@@ -73,7 +73,7 @@ class Maps extends React.Component {
                             key={index}
                             // title={item.price}
                             // description={item.price}
-                            onCalloutPress={() => { this.props.navigation.navigate('Detail') }}
+                            onPress={() => { this.props.navigation.navigate('Detail') }}
                             coordinate={{
                                 latitude: item.lat || 0,
                                 longitude: item.long || 0
