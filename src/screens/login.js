@@ -95,7 +95,7 @@ class Login extends React.Component {
                         >
                             <Text style={{ fontSize: 16, fontWeight: '700', color: '#fff' }}>{this.state.isLoading ? 'Loading':'Sign In'}</Text>
                     </TouchableOpacity>
-                    <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'center',backgroundColor:'red' }}>
+                    <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'center', }}>
                         <View>
                             <Text style={{ color: 'grey' }}>Dont have an Account?</Text>
                         </View>

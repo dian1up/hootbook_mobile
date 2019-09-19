@@ -105,12 +105,27 @@ export default class Signup extends Component {
                         >
                             <Text style={{ fontSize: 16, fontWeight: '700', color: '#fff' }}>{this.state.isLoading ? 'Loading':'Sign Up'}</Text>
                     </TouchableOpacity>
+
+                    <TouchableOpacity 
+                        style={{ 
+                            backgroundColor: '#66a1e7', 
+                            borderRadius: 25, 
+                            alignItems: 'center',
+                            width: width / 1.5, 
+                            marginTop:10,
+                            paddingVertical: 15, elevation: 3 }}
+                            disabled={this.state.isLoading}
+                            onPress={()=>this.props.navigation.navigate('RegisterUser')}
+                        >
+                            <Text style={{ fontSize: 16, fontWeight: '700', color: '#fff' }}>Sign Up As User</Text>
+                    </TouchableOpacity>
+
                     <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'center', }}>
                         <View>
                             <Text style={{ color: 'grey' }}>Already have an Account?</Text>
                         </View>
                         <View>
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
                                 <Text style={{ color: '#295989', fontWeight: '700' }}>Sign In</Text>
                             </TouchableOpacity>
                         </View>
