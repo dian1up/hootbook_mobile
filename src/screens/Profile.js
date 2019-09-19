@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
-import { Dimensions, ScrollView, Image, Text, View, ImageBackground, TouchableOpacity, StyleSheet, AsyncStorage, Header } from 'react-native';
+import { Dimensions, Modal, Image, Text, View, ActivityIndicator, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class Profile extends Component {
-    state = {
+    constructor(){
+        super()
+
+        this.state={
+            isLoading:false,
+        }
     }
+
     goBack = () => {
         this.props.navigation.goBack()
     }
+
+    logOut = () => {
+        this.setState({isLoading:true})
+        AsyncStorage.clear((err)=>{
+            if (!err) {
+                this.setState({isLoading:false})
+                this.props.navigation.navigate('Login')
+            } else {
+                this.setState({isLoading:false})
+                Alert.alert('Error',err)
+            }
+        })
+    }
+
     render() {
         // const address = this.state.address
         return (
@@ -61,13 +82,23 @@ class Profile extends Component {
                         <TouchableOpacity style={styles.logoutButton} onPress={() => { this.props.navigation.navigate('Edit') }} >
                             <Text style={[styles.buttonText]}>edit</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.logoutButton} >
+                        <TouchableOpacity style={styles.logoutButton} onPress={()=>this.logOut()}>
                             <Text style={[styles.buttonText]}>LOGOUT</Text>
                         </TouchableOpacity>
                     </View>
 
                 </View>
-
+{/* ==================================LOADING========================================================================== */}
+                <Modal
+                        animationType="fade"
+                        transparent={true}
+                        visible={this.state.isLoading}
+                    >
+                        <View style={{backgroundColor:'#f9f9f9', flex:1, opacity:0.7,alignItems:'center',justifyContent:'center'}}>
+                            <ActivityIndicator size="large" color="#0000ff" />
+                        </View>
+                        
+                </Modal>
             </View>
         )
     }
