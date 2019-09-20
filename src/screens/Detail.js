@@ -15,6 +15,8 @@ class Detail extends React.Component {
         super(props);
         this.state = {
             data: this.props.navigation.getParam('item'),
+            check_in:this.props.navigation.getParam('check_in'),
+            check_out:this.props.navigation.getParam('check_out'),
             images: [
                 'https://source.unsplash.com/1024x768/?nature',
                 'https://source.unsplash.com/1024x768/?water',
@@ -45,6 +47,7 @@ class Detail extends React.Component {
       AsyncStorage.getItem('token',async (err, result)=>{
         if (!err) {
             this.setState({token:result})
+            console.log('asdasdad'+result.split(' ')[1])
             let decode = await this.decodeJwt(result.split(' ')[1])
             console.log('data = ', decode.payload)
             this.setState({currentUserData:decode.payload})
@@ -78,11 +81,6 @@ class Detail extends React.Component {
                     let bookedAfter = (checkedIn > checkIn && checkedIn > checkOut)
                     let bookedBefore = (checkedOut < checkOut && checkedOut < checkIn)
                     available = (bookedAfter || bookedBefore)
-                    // if (!(bookedAfter || bookedBefore)) {
-                    //     console.log(checkedIn, checkedOut);
-                    //     available = false
-                    // } 
-
                 })
                 if(available){
                     const bookingData = {
