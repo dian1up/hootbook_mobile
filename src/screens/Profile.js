@@ -73,9 +73,9 @@ class Profile extends Component {
                         <View style={styles.wrapperIcon}>
                             <Image style={styles.place} source={require('../assets/Icons/history-clock-button.png')} />
                         </View>
-                        <View style={{ flex: 1, }}>
+                        <TouchableOpacity onPress={()=>this.props.navigation.navigate('History')} style={{ flex: 1, }}>
                             <Text style={styles.titleText}>History</Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
 
                     <View style={{ flexDirection: 'row' }}>
