@@ -41,6 +41,7 @@ class Detail extends React.Component {
         .then(res => res) 
         .catch(console.error);
     }
+
     componentDidMount(){
       AsyncStorage.getItem('token',async (err, result)=>{
         if (!err) {
@@ -78,15 +79,12 @@ class Detail extends React.Component {
                     let bookedAfter = (checkedIn > checkIn && checkedIn > checkOut)
                     let bookedBefore = (checkedOut < checkOut && checkedOut < checkIn)
                     available = (bookedAfter || bookedBefore)
-                    // if (!(bookedAfter || bookedBefore)) {
-                    //     console.log(checkedIn, checkedOut);
-                    //     available = false
-                    // } 
 
                 })
                 if(available){
                     const bookingData = {
                         service_id: data.id,
+                        price: data.price,
                         check_in:checkIn,
                         check_out:checkOut
                     }
@@ -98,6 +96,7 @@ class Detail extends React.Component {
                     })
                     .then(res => {
                         console.log(res)
+                        this.xendisInvois(res.data.data.totalPayment, this.state.currentUserData.email)
                         alert('Success')
                     })
                     .catch(err => {
@@ -132,6 +131,32 @@ class Detail extends React.Component {
     goBack = () => {
         this.props.navigation.goBack()
     }
+
+    xendisInvois=async(amount, userEmail)=>{
+        let data ={
+            "external_id": "invoice-{{$timestamp}}",
+            "amount": amount,
+            "payer_email": userEmail,
+            "description": "Booking Hotel Room"
+        }
+        await Axios.post('https://api.xendit.co/v2/invoices',data,{
+            auth:{
+                username:'xnd_development_GjFmOYU7tUUZjTkhn7WYFmAlxEtKEO14gFdFhPIsqhTIfj62UjrsujJVXqioRhn'
+            }
+        })
+        .then(res=>{
+            let data={
+                id_transaction:res.data.id,
+                data:res.data,
+                status:res.data.status
+            }
+            Axios.post('https://api-hot-book.herokuapp.com/payment/create',data,)
+            .then(res=>console.log(res))
+            .catch(err=>console.log(err))
+        })
+        .catch(err=>console.log('hai',err))
+    }
+
     render() {
         const { data } = this.state
         console.warn('data', data)
