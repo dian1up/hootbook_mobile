@@ -57,29 +57,59 @@ class Detail extends React.Component {
     onPressBooking = () => { 
         const { data,check_in,check_out, token } = this.state
         if(check_out){
+
             let check_out_arr = check_out.split('-')
             let check_in_arr = check_in.split('-')
             const checkOut  = new Date(check_out_arr[2], check_out_arr[1], check_out_arr[0])
             const checkIn  = new Date(check_in_arr[2], check_in_arr[1], check_in_arr[0])
-            console.log(checkOut, check_out)
-            const bookingData = {
-                service_id: data.id,
-                check_in:checkIn,
-                check_out:checkOut
-            }
-            console.log(bookingData)
-            Axios.post(`${config.host}/booking`, bookingData, {
+
+            Axios.get(config.host + '/booking/' + data.hotel_id, {
                 headers:{
                     Authorization: token
                 }
             })
-            .then(res => {
-                console.log(res)
-                alert('Success')
+            .then(result => {
+                console.log('daasdad',result, result.data)
+                let bookings = result.data.data.filter(bookingsData => bookingsData.service_id == data.id)
+                let available = true
+                bookings.forEach(booking =>{
+                    checkedIn = new Date(booking.check_in)
+                    checkedOut = new Date(booking.check_out)
+                    let bookedAfter = (checkedIn > checkIn && checkedIn > checkOut)
+                    let bookedBefore = (checkedOut < checkOut && checkedOut < checkIn)
+                    available = (bookedAfter || bookedBefore)
+                    // if (!(bookedAfter || bookedBefore)) {
+                    //     console.log(checkedIn, checkedOut);
+                    //     available = false
+                    // } 
+
+                })
+                if(available){
+                    const bookingData = {
+                        service_id: data.id,
+                        check_in:checkIn,
+                        check_out:checkOut
+                    }
+                    console.log(bookingData)
+                    Axios.post(`${config.host}/booking`, bookingData, {
+                        headers:{
+                            Authorization: token
+                        }
+                    })
+                    .then(res => {
+                        console.log(res)
+                        alert('Success')
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+                }else {
+                    alert('Room not available')
+                }
+                console.log(available)
             })
-            .catch(err => {
-                console.log(err)
-            })
+            .catch(err => console.error(err))
+            
         }else{
             alert('Please select checkout date')
         }
@@ -171,7 +201,7 @@ class Detail extends React.Component {
                         />
                         <DatePicker
                             style={{ width: '50%' }}
-                            date={this.state.check_out || new Date()} //initial date from state
+                            date={this.state.check_out} //initial date from state
                             mode="date" //The enum of date, datetime and time
                             placeholder="Check out"
                             format="DD-MM-YYYY"

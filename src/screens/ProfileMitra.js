@@ -1,7 +1,11 @@
 import React from 'react'
-import AsyncStorage from '@react-native-community/async-storage';
 import { View, Text, StyleSheet, Dimensions, Image, ScrollView, TouchableOpacity, Modal, ActivityIndicator } from 'react-native'
 const { height, width } = Dimensions.get('window')
+import Axios from 'axios';
+import AsyncStorage from '@react-native-community/async-storage';
+import config from '../config/config';
+import Jwt from "react-native-pure-jwt";
+
 class ProfileMitra extends React.Component {
 
     constructor(){
@@ -9,6 +13,7 @@ class ProfileMitra extends React.Component {
 
         this.state={
             isLoading:false,
+            profile:''
         }
     }
 
@@ -25,7 +30,49 @@ class ProfileMitra extends React.Component {
         })
     }
 
+    decodeJwt = (inputJwt) => {
+        return Jwt.decode(
+            inputJwt, // the token
+            config.secret, // the secret
+            {
+              skipValidation: true // to skip signature and exp verification
+            }
+          )
+          .then(res => res) // already an object. read below, exp key note
+          .catch(console.error);
+    }
+
+
+    componentDidMount=  ()=>{
+        AsyncStorage.getItem('token',async (err, result)=>{
+            if (!err) {
+                let decode = await this.decodeJwt(result.split(' ')[1])
+                let input = {
+                    id:decode.payload.id
+                }
+                await Axios.get(`${config.host}/profile/partner/${decode.payload.id}`, {
+                    headers:{
+                        Authorization: result
+                      }
+                })
+                .then(res =>{
+                    
+                    this.setState({
+                        profile:res.data[0]
+                    })
+                    let coba = this.state.profile.address.split(',')
+                    console.log(coba[0])
+                })
+                .catch(err =>console.log(err))
+                console.warn('data id = ', data)
+            } else {
+                console.warn(err)
+            }
+        })
+    }
+
     render() {
+        const {profile} = this.state
         return (
             <View style={{flex:1}}>
                 <View style={{ height:height/2.5, width:width}}>
@@ -66,7 +113,7 @@ class ProfileMitra extends React.Component {
                     <Image source={require('../assets/images/profile.png')} style={{resizeMode:'stretch', height:50, width:50, marginVertical:10, marginRight:10}}/>
                         <View style={{marginLeft:10}}>
                             <Text style={{fontSize:20, marginTop:5, fontFamily:'Roboto', fontWeight:'500'}}>Owner Name</Text>
-                            <Text style={{marginTop:5, fontWeight:'100'}}>diancandra112@gmail.com</Text>
+                            <Text style={{marginTop:5, fontWeight:'100'}}>{profile.name}</Text>
                         </View>
                     </View>
 
@@ -74,7 +121,7 @@ class ProfileMitra extends React.Component {
                         <Image source={require('../assets/images/email.png')} style={{resizeMode:'stretch', height:50, width:50, marginVertical:10, marginRight:10}}/>
                         <View style={{marginLeft:10}}>
                             <Text style={{fontSize:20, marginTop:5, fontFamily:'Roboto', fontWeight:'500'}}>GMAIL</Text>
-                            <Text style={{marginTop:5, fontWeight:'100'}}>diancandra112@gmail.com</Text>
+                            <Text style={{marginTop:5, fontWeight:'100'}}>{profile.email}</Text>
                         </View>
                     </View>
                     
@@ -82,7 +129,7 @@ class ProfileMitra extends React.Component {
                         <Image source={require('../assets/images/address.png')} style={{resizeMode:'stretch', height:50, width:50, marginVertical:10, marginRight:10}}/>
                         <View style={{marginLeft:10}}>
                             <Text style={{fontSize:20, marginTop:5, fontFamily:'Roboto', fontWeight:'500'}}>ADDRESS</Text>
-                            <Text style={{marginTop:5, fontWeight:'100'}}>diancandra112@gmail.com aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Text>
+                            <Text style={{marginTop:5, fontWeight:'100'}}>{profile.address}</Text>
                         </View>
                     </View>
 
