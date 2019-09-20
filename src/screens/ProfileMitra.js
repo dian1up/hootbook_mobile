@@ -47,13 +47,10 @@ class ProfileMitra extends React.Component {
         AsyncStorage.getItem('token',async (err, result)=>{
             if (!err) {
                 let decode = await this.decodeJwt(result.split(' ')[1])
-                let input = {
-                    id:decode.payload.id
-                }
                 await Axios.get(`${config.host}/profile/partner/${decode.payload.id}`, {
                     headers:{
                         Authorization: result
-                      }
+                    }
                 })
                 .then(res =>{
                     
@@ -91,7 +88,7 @@ class ProfileMitra extends React.Component {
                     <Text style={{alignSelf:'center', fontSize:15, fontFamily:'Roboto', marginTop:5}}>Hotel</Text>
 
                        
-                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('EditProfileMitra')}  style={{ height:50, width:50, position:'absolute', bottom:'5%', left:'5%'}}>
+                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('EditProfileMitra',{profile})}  style={{ height:50, width:50, position:'absolute', bottom:'5%', left:'5%'}}>
                         <Image source={require('../assets/images/edit.png')} style={{ height:50, width:50, resizeMode:'stretch',}}/>
                     </TouchableOpacity>
 
