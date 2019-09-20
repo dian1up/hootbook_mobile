@@ -17,6 +17,7 @@ import com.airbnb.android.react.maps.MapsPackage;
 import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
 import io.invertase.firebase.storage.RNFirebaseStoragePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
+import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage; 
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -38,6 +39,7 @@ public class MainApplication extends Application implements ReactApplication {
       packages.add(new RNFirebaseMessagingPackage());
       packages.add(new RNFirebaseStoragePackage());
       packages.add(new RNFirebaseFirestorePackage());
+      packages.add(new RNFirebaseNotificationsPackage());
       return packages;
     }
 
