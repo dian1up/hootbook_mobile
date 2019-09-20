@@ -22,15 +22,6 @@ export default class Craigslist extends Component {
       userSelected:[],
       isLoading: false,
       services: []
-        // {id:1,  name: "Hotel 1",   image:"https://img.icons8.com/color/100/000000/real-estate.png",           count:"Price: $10/Night"},
-        // {id:2,  name: "Hotel 2",   image:"https://img.icons8.com/color/100/000000/real-estate.png",       count:"Price: $10/Night"},
-        // {id:3,  name: "Hotel 3",   image:"https://img.icons8.com/color/100/000000/real-estate.png", count:"Price: $10/Night"} ,
-        // {id:4,  name: "Hotel 4",   image:"https://img.icons8.com/color/100/000000/real-estate.png",    count:"Price: $10/Night"} ,
-        // {id:5,  name: "Hotel 5",   image:"https://img.icons8.com/color/100/000000/real-estate.png",        count:"Price: $10/Night"} ,
-        // {id:6,  name: "Hotel 6",   image:"https://img.icons8.com/color/100/000000/real-estate.png",        count:"Price: $10/Night"},
-        // {id:7,  name: "Hotel 7",   image:"https://img.icons8.com/color/100/000000/real-estate.png",        count:"Price: $10/Night"},
-        // {id:8,  name: "Hotel 8",   image:"https://img.icons8.com/color/100/000000/real-estate.png",        count:"Price: $10/Night"}
-      
     };
   }
 
