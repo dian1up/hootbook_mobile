@@ -11,8 +11,6 @@ class Home extends React.Component {
         super(props)
         //set value in state for initial date
         this.state = {
-            checkIn: new Date(),
-            checkOut: new Date(),
             services: [],
             isLoading: false,
         }
@@ -32,8 +30,21 @@ class Home extends React.Component {
             .catch(err => {
                 console.log(err)
             })
+    }
+    onPressSearch = () => { 
+        const {checkIn, checkOut, services, city} = this.state
+        if(!checkIn || !checkOut || !city){
+            alert('Fill in check in and checkout first')
+        }else{
+            let searchData = {
+                checkIn,
+                checkOut,
+                services,
+                city,
+            }
+            this.props.navigation.navigate('Explore',{searchData}) 
 
-
+        }
     }
     render() {
         const data = this.state.services
@@ -50,6 +61,7 @@ class Home extends React.Component {
                         <View style={styles.cardSearch}>
                             <TextInput placeholder='Search Location in here'
                                 style={styles.searching}
+                                onChangeText={city => this.setState({city})}
                             />
                             <Image
                                 source={require('../assets/Icons/iconSearch.png')}
@@ -68,7 +80,7 @@ class Home extends React.Component {
                                         mode="date" //The enum of date, datetime and time
                                         placeholder="select date"
                                         format="DD-MM-YYYY"
-                                        minDate="01-01-2016"
+                                        minDate={new Date()}
                                         // maxDate="01-01-2019"
                                         confirmBtnText="Confirm"
                                         cancelBtnText="Cancel"
@@ -95,7 +107,7 @@ class Home extends React.Component {
                                         mode="date" //The enum of date, datetime and time
                                         placeholder="select date"
                                         format="DD-MM-YYYY"
-                                        minDate="01-01-2016"
+                                        minDate={this.state.checkIn || new Date()}
                                         // maxDate="01-01-2019"
                                         confirmBtnText="Confirm"
                                         cancelBtnText="Cancel"
@@ -118,7 +130,7 @@ class Home extends React.Component {
                                 </View>
                             </View>
                             <View style={{ justifyContent: 'center' }}>
-                                <TouchableOpacity onPress={() => { this.props.navigation.navigate('Explore') }} style={{ backgroundColor: '#66a1e7', borderRadius: 10, alignItems: 'center', paddingVertical: 12 }}>
+                                <TouchableOpacity onPress={this.onPressSearch} style={{ backgroundColor: '#66a1e7', borderRadius: 10, alignItems: 'center', paddingVertical: 12 }}>
                                     <Text style={{ fontSize: 16, fontWeight: '700', color: '#fff' }}>Search</Text>
                                 </TouchableOpacity>
                             </View>
@@ -133,8 +145,6 @@ class Home extends React.Component {
                     {this.state.isLoading == true ?
                         <ActivityIndicator /> :
                         <PopulerDestination data={data} />}
-
-
                 </View>
             </ScrollView >
         )

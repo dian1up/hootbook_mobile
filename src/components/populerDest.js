@@ -46,8 +46,6 @@ class PopulerDestination extends React.Component {
                         </View>
                     </TouchableOpacity>
                 )}
-
-
             </ScrollView >
 
         )

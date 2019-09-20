@@ -8,9 +8,7 @@ class Explore extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            checkIn: new Date(),
-            checkOut: new Date(),
-
+            ...props.navigation.getParam('searchData'),
         }
     }
     render() {
@@ -30,7 +28,10 @@ class Explore extends React.Component {
                         style={{
                             width: '100%', position: 'relative', paddingHorizontal: 30, elevation: 5, zIndex: 1
                         }}
-                        placeholder='Search for city' />
+                        defaultValue={this.state.city}
+                        placeholder={this.state.city}
+                        onChangeText={city => this.setState({city})}
+                        />
                     <Image
                         style={{ position: 'absolute', top: 17, left: 10 }}
                         source={require('../assets/Icons/iconSearch.png')} />
@@ -42,7 +43,7 @@ class Explore extends React.Component {
                                 mode="date" //The enum of date, datetime and time
                                 placeholder="select date"
                                 format="DD-MM-YYYY"
-                                minDate={this.checkIn}
+                                minDate={new Date()}
                                 confirmBtnText="Confirm"
                                 cancelBtnText="Cancel"
                                 customStyles={{
@@ -63,11 +64,11 @@ class Explore extends React.Component {
                         <View style={{ paddingHorizontal: 10 }}>
                             <Text>checkOut</Text>
                             <DatePicker
-                                date={this.state.checkIn} //initial date from state
+                                date={this.state.checkOut} //initial date from state
                                 mode="date" //The enum of date, datetime and time
                                 placeholder="select date"
                                 format="DD-MM-YYYY"
-                                minDate={this.checkIn}
+                                minDate={this.state.checkIn}
                                 confirmBtnText="Confirm"
                                 cancelBtnText="Cancel"
                                 customStyles={{
@@ -82,15 +83,15 @@ class Explore extends React.Component {
                                         borderWidth: 0
                                     }
                                 }}
-                                onDateChange={(checkIn) => { this.setState({ checkIn: checkIn }) }}
+                                onDateChange={(checkOut) => { this.setState({ checkOut: checkOut }) }}
                             />
                         </View>
                     </View>
                 </View>
-                <TouchableOpacity style={{ backgroundColor: 'tomato', padding: 12, marginHorizontal: 10, borderRadius: 10 }}>
+                <TouchableOpacity onPress={()=>this.setState({trigger:Number(this.state.trigger)+1})} style={{ backgroundColor: 'tomato', padding: 12, marginHorizontal: 10, borderRadius: 10 }}>
                     <Text style={{ fontSize: 16, color: '#fff' }}><Image style={{ transform: [{ rotate: '90deg' }] }} source={require('../assets/Icons/iconSearch.png')} />    Search</Text>
                 </TouchableOpacity>
-                <ListExplore />
+                <ListExplore key={this.state.trigger} {...this.state} />
             </View>
         )
     }
