@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, Image, Dimensions, TextInput, TouchableOpacity,
 import DatePicker from 'react-native-datepicker'
 import PopulerDestination from '../components/populerDest'
 import Axios from 'axios'
+import AsyncStorage from '@react-native-community/async-storage';
+import firebase from 'react-native-firebase';
 import config from '../config/config'
 
 const { width, height } = Dimensions.get('window')
@@ -31,6 +33,46 @@ class Home extends React.Component {
             .catch(err => {
                 console.log(err)
             })
+
+            this.checkPermission()
+            this.removeNotificationListener = firebase.notifications().onNotification((notification) => {
+                console.log(notification)
+            });
+
+    }
+    
+    componentWillUnmount(){
+        this.removeNotificationListener()
+    }
+    async checkPermission() {
+        const enabled = await firebase.messaging().hasPermission();
+        console.log(enabled);
+        if (enabled) {
+            this.getToken();
+        } else {
+            this.requestPermission();
+        }
+    }
+  
+    async getToken() {
+        let fcmToken = await AsyncStorage.getItem('fcmToken');
+        if (!fcmToken) {
+            fcmToken = await firebase.messaging().getToken();
+            if (fcmToken) {
+                console.log(fcmToken);
+                await AsyncStorage.setItem('fcmToken', fcmToken);
+            }
+        }
+        console.log(fcmToken);
+    }
+  
+    async requestPermission() {
+        try {
+            await firebase.messaging().requestPermission();
+            this.getToken();
+        } catch (error) {
+            console.log('permission rejected');
+        }
     }
     render() {
         const data = this.state.services
