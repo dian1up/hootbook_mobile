@@ -9,28 +9,45 @@ import {
     Dimensions,
     StatusBar,
     StyleSheet,
+    Modal,
+    ActivityIndicator,
 } from 'react-native';
-
+import Axios from 'axios';
+import config from '../config/config';
 const { width, height } = Dimensions.get('window')
 
 export default class Signup extends Component {
     constructor(props){
         super(props)
         this.state = {
-            formData: {
-                    name: '',
-                    email: '',
-                    password: '',  
-                    },
+            name: '',
+            email: '',
+            password: '',  
             isLoading: false,
         }
     }
 
     submit = () => {
-        Alert.alert('SIGN UP');
+        Alert.alert('SIGN UP', this.state.formData.name);
     }
 
-    changerValue = field => value => { this.setState({[field]:value})}
+    handleSubmit = () => {  
+        this.setState({isLoading:true})
+        let data = {
+            name:this.state.name,
+            email:this.state.email,
+            password:this.state.password,
+        }
+        Axios.post(`${config.host}/register/user`,data)
+            .then(()=>{
+                console.log('aosdil');
+                this.setState({isLoading:false})
+                this.props.navigation.navigate('Login')
+            })
+            .catch(err =>{ 
+                this.setState({isLoading:false})
+                Alert.alert(err)})
+    }
 
     render() {
         return(
@@ -44,22 +61,22 @@ export default class Signup extends Component {
                         placeholder="Name"
                         selectionColor="#fff"
                         maxLength={64}
-                        onChangeText={this.changerValue('name')}
-                        onSubmitEditing={()=> this.formData.email.focus()}/>
+                        onChangeText={(e)=>this.setState({name:e})}
+                        />
                     <TextInput style={styles.input}
                         placeholder="Email"
                         selectionColor="#fff"
                         keyboardType="email-address"
                         maxLength={64}
-                        onChangeText={this.changerValue('email')}
-                        onSubmitEditing={()=> this.formData.company.focus()}/>
+                        onChangeText={(e)=>this.setState({email:e})}
+                        />
                     <TextInput style={styles.input}
                         placeholder="Password"
                         selectionColor="#fff"
                         secureTextEntry={true}
                         maxLength={32}
-                        onChangeText={this.changerValue('password')}
-                        onSubmitEditing={()=> this.formData.password.focus()}/>
+                        onChangeText={(e)=>this.setState({password:e})}
+                        />
                     <TouchableOpacity 
                         style={{ 
                             backgroundColor: '#66a1e7', 
@@ -69,7 +86,7 @@ export default class Signup extends Component {
                         
                             paddingVertical: 15, elevation: 3 }}
                             disabled={this.state.isLoading}
-                            onPress={this.submit}
+                            onPress={()=>this.handleSubmit()}
                         >
                             <Text style={{ fontSize: 16, fontWeight: '700', color: '#fff' }}>{this.state.isLoading ? 'Loading':'Sign Up'}</Text>
                     </TouchableOpacity>
@@ -97,6 +114,17 @@ export default class Signup extends Component {
                             </TouchableOpacity>
                         </View>
                     </View>
+{/* ==================================LOADING========================================================================== */}
+                <Modal
+                        animationType="fade"
+                        transparent={true}
+                        visible={this.state.isLoading}
+                    >
+                        <View style={{backgroundColor:'#f9f9f9', flex:1, opacity:0.7,alignItems:'center',justifyContent:'center'}}>
+                            <ActivityIndicator size="large" color="#0000ff" />
+                        </View>
+                        
+                </Modal>
             </View>
         )
     }
