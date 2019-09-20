@@ -136,9 +136,9 @@ class Detail extends React.Component {
     xendisInvois=async(amount, userEmail, id)=>{
         let data ={
             "external_id": "invoice-{{$timestamp}}",
-            "amount": 1800000,
-            "payer_email": "customer@domain.com",
-            "description": "Invoice Demo #123"
+            "amount": amount,
+            "payer_email": userEmail,
+            "description": "Booking Hotel Room"
         }
         await Axios.post('https://api.xendit.co/v2/invoices',data,{
             auth:{
