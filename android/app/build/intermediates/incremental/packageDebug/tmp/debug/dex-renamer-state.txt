@@ -1,10 +1,10 @@
-#Wed Sep 18 21:54:59 ICT 2019
+#Fri Sep 20 15:42:02 ICT 2019
 path.2=classes3.dex
 path.1=classes2.dex
 path.0=classes.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.2=E\:\\ProjectKu\\hootbook_mobile\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-base.1=E\:\\ProjectKu\\hootbook_mobile\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-base.0=E\:\\ProjectKu\\hootbook_mobile\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+base.2=D\:\\hootbook_mobile\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+base.1=D\:\\hootbook_mobile\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+base.0=D\:\\hootbook_mobile\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0

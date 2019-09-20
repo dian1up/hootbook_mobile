@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\ProjectKu\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mk\\values-mk.xml",
+            "outputFile": "D:\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mk\\values-mk.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\02b05ad0f8391436bb838afed2c293e2\\res\\values-mk\\values-mk.xml",
+                    "source": "C:\\Users\\ulila\\.gradle\\caches\\transforms-2\\files-2.1\\ef16e3c21ceb6f3676679f486a3f606d\\res\\values-mk\\values-mk.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\2eb9382be400f34ca715d0a2f1169a70\\res\\values-mk\\values.xml",
+                    "source": "C:\\Users\\ulila\\.gradle\\caches\\transforms-2\\files-2.1\\c8da8e9b7b742604b293a900729c4101\\res\\values-mk\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "195",
+                        "endOffsets": "442"
+                    },
+                    "to": {
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "4038",
+                        "endColumns": "195",
+                        "endOffsets": "4229"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ulila\\.gradle\\caches\\transforms-2\\files-2.1\\b853f9c93c6ed6394242b0b20c03692c\\res\\values-mk\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -38,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\daadfc0050271eb5f918cd86f6bb4c68\\res\\values-mk\\values.xml",
+                    "source": "C:\\Users\\ulila\\.gradle\\caches\\transforms-2\\files-2.1\\f0baa6b2e97a474e5899bca73290ed18\\res\\values-mk\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -55,7 +72,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\2760d525fad9e32b2429ca575aea28f5\\res\\values-mk\\values-mk.xml",
+                    "source": "C:\\Users\\ulila\\.gradle\\caches\\transforms-2\\files-2.1\\b5dd83796331050c65e6abdff7a6e8d4\\res\\values-mk\\values-mk.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -69,23 +86,6 @@
                         "startOffsets": "5781",
                         "endColumns": "100",
                         "endOffsets": "5877"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\ae8e736a20226622978436f96b2f89b6\\res\\values-mk\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "195",
-                        "endOffsets": "442"
-                    },
-                    "to": {
-                        "startLines": "37",
-                        "startColumns": "4",
-                        "startOffsets": "4038",
-                        "endColumns": "195",
-                        "endOffsets": "4229"
                     }
                 }
             ]

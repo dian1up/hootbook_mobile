@@ -1,4 +1,4 @@
-# Referenced at E:\ProjectKu\hootbook_mobile\android\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:45
+# Referenced at D:\hootbook_mobile\android\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:49
 -keep class androidx.core.app.CoreComponentFactory { <init>(); }
-# Referenced at E:\ProjectKu\hootbook_mobile\android\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:45
+# Referenced at D:\hootbook_mobile\android\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:49
 -keep class com.hootbook_mobile.MainApplication { <init>(); }

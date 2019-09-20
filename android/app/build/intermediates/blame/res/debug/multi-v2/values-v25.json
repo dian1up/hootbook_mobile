@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\ProjectKu\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
+            "outputFile": "D:\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\02b05ad0f8391436bb838afed2c293e2\\res\\values-v25\\values-v25.xml",
+                    "source": "C:\\Users\\ulila\\.gradle\\caches\\transforms-2\\files-2.1\\ef16e3c21ceb6f3676679f486a3f606d\\res\\values-v25\\values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

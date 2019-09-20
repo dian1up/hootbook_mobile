@@ -1,10 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\ProjectKu\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "D:\\hootbook_mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\02b05ad0f8391436bb838afed2c293e2\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\ulila\\.gradle\\caches\\transforms-2\\files-2.1\\b5dd83796331050c65e6abdff7a6e8d4\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ulila\\.gradle\\caches\\transforms-2\\files-2.1\\ef16e3c21ceb6f3676679f486a3f606d\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,16 +30,6 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\dian\\.gradle\\caches\\transforms-2\\files-2.1\\2760d525fad9e32b2429ca575aea28f5\\res\\values-v16\\values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]

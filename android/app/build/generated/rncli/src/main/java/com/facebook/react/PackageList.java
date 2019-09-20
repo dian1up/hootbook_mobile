@@ -23,8 +23,12 @@ import io.invertase.firebase.RNFirebasePackage;
 import com.devfd.RNGeocoder.RNGeocoderPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+// react-native-image-picker
+import com.imagepicker.ImagePickerPackage;
 // react-native-maps
 import com.airbnb.android.react.maps.MapsPackage;
+// react-native-pure-jwt
+import com.zaguiini.RNPureJwt.RNPureJwtPackage;
 // react-native-reanimated
 import com.swmansion.reanimated.ReanimatedPackage;
 // react-native-vector-icons
@@ -67,7 +71,9 @@ public class PackageList {
       new RNFirebasePackage(),
       new RNGeocoderPackage(),
       new RNGestureHandlerPackage(),
+      new ImagePickerPackage(),
       new MapsPackage(),
+      new RNPureJwtPackage(),
       new ReanimatedPackage(),
       new VectorIconsPackage()
     ));

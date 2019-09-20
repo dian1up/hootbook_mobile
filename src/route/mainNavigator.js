@@ -24,6 +24,8 @@ import EditProfileMitra from '../screens/EditProfileMitra'
 import HistoryMitra from '../screens/HistoryMitra'
 import ChatListMitra from '../screens/ChatlistMitra'
 import ChatListUser from '../screens/ChatlistUser'
+import AddServices from '../screens/AddServices'
+import DetailMitra from '../screens/DetailMitra'
 import { styles } from "react-native-image-slider-box/SliderBox";
 
 
@@ -180,6 +182,8 @@ const AppStackNavigator = createStackNavigator(
         Detail,
         Edit,
         Chat,
+        AddServices,
+        DetailMitra,
         EditProfileMitra: {
             screen: EditProfileMitra,
             navigationOptions: {
@@ -206,7 +210,7 @@ const Apps = createSwitchNavigator({
     AppStackNavigator,
 
 }, {
-    initialRouteName: 'AppStackNavigator',
+    initialRouteName: 'AuthStack',
 })
 const AppContainer = createAppContainer(Apps)
 export default AppContainer

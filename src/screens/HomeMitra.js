@@ -49,12 +49,12 @@ export default class Craigslist extends Component {
           }}
           renderItem={({item}) => {
           return (
-            <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener(item)}}>
+            <TouchableOpacity style={styles.card} onPress={() => this.props.navigation.navigate("DetailMitra")}>
               <Image style={styles.image} source={{uri: item.image}}/>
               <View style={styles.cardContent}>
                 <Text style={styles.name}>{item.name}</Text>
                 <Text style={styles.count}>{item.count}</Text>
-                <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
+                <TouchableOpacity style={styles.followButton} onPress={()=> this.props.navigation.navigate("DetailMitra")}>
                   <Text style={styles.followButtonText}>Explore now</Text>  
                 </TouchableOpacity>
               </View>
@@ -62,13 +62,12 @@ export default class Craigslist extends Component {
           )}}/>
       </View>
       <View style={styles.container}>
-      <TouchableOpacity style={styles.card} onPress={() => this.props.navigation.navigate("HomeMitra") }>
+      <TouchableOpacity style={styles.card} onPress={() => this.props.navigation.navigate("AddServices") }>
               {/* <Image style={styles.image} source={{uri: add}}/> */}
               <Image style={styles.image} source={require('../assets/images/add.png')} />
               <View style={styles.cardContent}>
                 <Text style={styles.name}>ADD SERVICES</Text>
-                <TouchableOpacity style={styles.followButton} onPress={() => this.props.navigation.navigate("HomeMitra")}>
-                  <Text style={styles.followButtonText}>Explore now</Text>  
+                <TouchableOpacity style={styles.followButton} onPress={() => this.props.navigation.navigate("AddServices")}>
                 </TouchableOpacity>
               </View>
       </TouchableOpacity>
