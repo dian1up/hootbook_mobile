@@ -11,6 +11,7 @@ import {
     StyleSheet,
     ScrollView,
     Modal,
+    ActivityIndicator
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import Axios from 'axios';
@@ -28,6 +29,9 @@ export default class Signup extends Component {
                 longitude:110
             },
             mapRegion: null,
+            kota:'',
+            profinsi:'',
+            alamat:'',
             name: '',
             email: '',
             company: '',
@@ -47,21 +51,12 @@ export default class Signup extends Component {
     }
 
     handleSubmit = () => {
-        // this.state.data.push({
-        //     name: this.state.name,
-        //     email: this.state.email,
-        //     company: this.state.company,
-        //     password: this.state.password,
-        //     address: this.state.address,
-        //     latitude:this.state.latitude,
-        //     longitude:this.state.longitude,
-        // })
         const data ={
                 name: this.state.name,
                 email: this.state.email,
                 company: this.state.company,
                 password: this.state.password,
-                address: this.state.address,
+                address: this.state.profinsi+','+this.state.kota+','+this.state.alamat,
                 latitude:this.state.latitude,
                 longitude:this.state.longitude,
             }
@@ -106,9 +101,19 @@ export default class Signup extends Component {
                         onChangeText={(e)=>this.setState({company:e})}/>
                     <TextInput style={styles.input}
                         underlineColorAndroid='rgba(0,0,0,0)'
+                        placeholder="Province"
+                        selectionColor="#fff"
+                        onChangeText={(e)=>this.setState({profinsi:e})}/>
+                    <TextInput style={styles.input}
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                        placeholder="City"
+                        selectionColor="#fff"
+                        onChangeText={(e)=>this.setState({kota:e})}/>
+                    <TextInput style={styles.input}
+                        underlineColorAndroid='rgba(0,0,0,0)'
                         placeholder="Address"
                         selectionColor="#fff"
-                        onChangeText={(e)=>this.setState({address:e})}/>
+                        onChangeText={(e)=>this.setState({alamat:e})}/>
                     <TextInput style={styles.input}
                         placeholder="Password"
                         selectionColor="#fff"
@@ -245,9 +250,18 @@ export default class Signup extends Component {
                                 />
                             </MapView>
                     </View>
-
-                        
                     </Modal>
+{/* ==================================LOADING========================================================================== */}
+                <Modal
+                        animationType="fade"
+                        transparent={true}
+                        visible={this.state.isLoading}
+                    >
+                        <View style={{backgroundColor:'#f9f9f9', flex:1, opacity:0.7,alignItems:'center',justifyContent:'center'}}>
+                            <ActivityIndicator size="large" color="#0000ff" />
+                        </View>
+                        
+                </Modal>
             </View>
         )
     }

@@ -130,7 +130,7 @@ class Login extends React.Component {
                             <Text style={{ color: 'grey' }}>Dont have an Account?</Text>
                         </View>
                         <View>
-                            <TouchableOpacity style={{zIndex:1}} onPress={() => this.props.navigation.navigate('RegisterMitra')}>
+                            <TouchableOpacity style={{zIndex:1}} onPress={() => this.props.navigation.navigate('RegisterUser')}>
                                 <Text style={{ color: '#295989', fontWeight: '700' }}>Sign Up</Text>
                             </TouchableOpacity>
                         </View>
