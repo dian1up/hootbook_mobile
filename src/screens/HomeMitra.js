@@ -10,6 +10,7 @@ import {
   Alert,
   ScrollView
 } from 'react-native';
+import Axios from 'axios'
 
 
 export default class Craigslist extends Component {
@@ -19,18 +20,38 @@ export default class Craigslist extends Component {
     this.state = {
       modalVisible:false,
       userSelected:[],
-      services: [
-        {id:1,  name: "Hotel 1",   image:"https://img.icons8.com/color/100/000000/real-estate.png",           count:"Price: $10/Night"},
-        {id:2,  name: "Hotel 2",    image:"https://img.icons8.com/color/100/000000/real-estate.png",       count:"Price: $10/Night"},
-        {id:3,  name: "Hotel 3",       image:"https://img.icons8.com/color/100/000000/real-estate.png", count:"Price: $10/Night"} ,
-        {id:4,  name: "Hotel 4",   image:"https://img.icons8.com/color/100/000000/real-estate.png",    count:"Price: $10/Night"} ,
-        {id:5,  name: "Hotel 5",   image:"https://img.icons8.com/color/100/000000/real-estate.png",        count:"Price: $10/Night"} ,
-        {id:6,  name: "Hotel 6",   image:"https://img.icons8.com/color/100/000000/real-estate.png",        count:"Price: $10/Night"},
-        {id:7,  name: "Hotel 7",   image:"https://img.icons8.com/color/100/000000/real-estate.png",        count:"Price: $10/Night"},
-        {id:8,  name: "Hotel 8",   image:"https://img.icons8.com/color/100/000000/real-estate.png",        count:"Price: $10/Night"}
-      ]
+      isLoading: false,
+      services: []
+        // {id:1,  name: "Hotel 1",   image:"https://img.icons8.com/color/100/000000/real-estate.png",           count:"Price: $10/Night"},
+        // {id:2,  name: "Hotel 2",   image:"https://img.icons8.com/color/100/000000/real-estate.png",       count:"Price: $10/Night"},
+        // {id:3,  name: "Hotel 3",   image:"https://img.icons8.com/color/100/000000/real-estate.png", count:"Price: $10/Night"} ,
+        // {id:4,  name: "Hotel 4",   image:"https://img.icons8.com/color/100/000000/real-estate.png",    count:"Price: $10/Night"} ,
+        // {id:5,  name: "Hotel 5",   image:"https://img.icons8.com/color/100/000000/real-estate.png",        count:"Price: $10/Night"} ,
+        // {id:6,  name: "Hotel 6",   image:"https://img.icons8.com/color/100/000000/real-estate.png",        count:"Price: $10/Night"},
+        // {id:7,  name: "Hotel 7",   image:"https://img.icons8.com/color/100/000000/real-estate.png",        count:"Price: $10/Night"},
+        // {id:8,  name: "Hotel 8",   image:"https://img.icons8.com/color/100/000000/real-estate.png",        count:"Price: $10/Night"}
+      
     };
   }
+
+  componentDidMount = async () => {
+    this.setState({
+        isLoading: true,
+    })
+    const id = this.state.services.id
+    await Axios.get('https://api-hot-book.herokuapp.com/services')
+        .then(result => {
+            console.warn('data', result)
+            this.setState({
+                services: result.data,
+                isLoading: false
+            })
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
 
   clickEventListener = (item) => {
     Alert.alert('Message', 'Item clicked. '+item.name);
@@ -43,17 +64,17 @@ export default class Craigslist extends Component {
         <FlatList 
           style={styles.contentList}
           columnWrapperStyle={styles.listContainer}
-          services={this.state.services}
+          data={this.state.services}
           keyExtractor= {(item) => {
             return item.id;
           }}
           renderItem={({item}) => {
           return (
             <TouchableOpacity style={styles.card} onPress={() => this.props.navigation.navigate("DetailMitra")}>
-              <Image style={styles.image} source={{uri: item.image}}/>
+              <Image style={styles.image} source={{uri: "https://img.icons8.com/color/100/000000/real-estate.png"}}/>
               <View style={styles.cardContent}>
-                <Text style={styles.name}>{item.name}</Text>
-                <Text style={styles.count}>{item.count}</Text>
+                <Text style={styles.name}>{item.room_type}</Text>
+                <Text style={styles.count}>{item.price}</Text>
                 <TouchableOpacity style={styles.followButton} onPress={()=> this.props.navigation.navigate("DetailMitra")}>
                   <Text style={styles.followButtonText}>Explore now</Text>  
                 </TouchableOpacity>
@@ -63,7 +84,6 @@ export default class Craigslist extends Component {
       </View>
       <View style={styles.container}>
       <TouchableOpacity style={styles.card} onPress={() => this.props.navigation.navigate("AddServices") }>
-              {/* <Image style={styles.image} source={{uri: add}}/> */}
               <Image style={styles.image} source={require('../assets/images/add.png')} />
               <View style={styles.cardContent}>
                 <Text style={styles.name}>ADD SERVICES</Text>
