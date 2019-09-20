@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, Dimensions, StatusBar, Image, TouchableOpacity, Modal } from 'react-native'
 import geolocation from '@react-native-community/geolocation';
 import MapView, { Marker } from 'react-native-maps';
+import Axios from 'axios'
 // import { withNavigation } from 'react-navigation';
 
 
@@ -13,26 +14,25 @@ class Maps extends React.Component {
             mapRegion: null,
             lastLat: null,
             lastLong: null,
-            hotel: [
-                {
-                    id: 1,
-                    name: 'homestay apalah',
-                    lat: -7.797068,
-                    long: 110.370529,
-                    price: 200000
-                },
-                {
-                    id: 2,
-                    name: 'homestay fuad',
-                    lat: -7.796068,
-                    long: 110.370529,
-                    price: "300000"
-                }
-            ]
+            services: []
         }
     }
 
     componentDidMount = async () => {
+        this.setState({
+            isLoading: true
+        })
+        await Axios.get('https://api-hot-book.herokuapp.com/services')
+            .then(result => {
+                console.warn('data hotel', result)
+                this.setState({
+                    services: result.data,
+                    isLoading: false
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
         this.watchID = geolocation.getCurrentPosition((position) => {
             let region = {
                 latitude: position.coords.latitude,
@@ -67,18 +67,18 @@ class Maps extends React.Component {
                     maxZoomLevel={20}
 
                 >
-                    {this.state.hotel.map((item, index) =>
+                    {this.state.services.map((item, index) =>
 
                         <Marker
                             key={index}
                             // title={item.price}
                             // description={item.price}
-                            onPress={() => { this.props.navigation.navigate('Detail') }}
+                            onPress={() => { this.props.navigation.navigate('Detail',{item}) }}
                             coordinate={{
-                                latitude: item.lat || 0,
-                                longitude: item.long || 0
+                                latitude: Number(item.latitude) || 0,
+                                longitude: Number(item.longitude) || 0
                             }}>
-                            <Text style={{ backgroundColor: '#87baf3', color: '#fff', paddingVertical: 5, paddingHorizontal: 10, borderRadius: 5, position: 'relative' }}>{item.name}</Text>
+                            <Text style={{ backgroundColor: '#87baf3', color: '#fff', paddingVertical: 5, paddingHorizontal: 10, borderRadius: 5, position: 'relative' }}>{item.company}</Text>
                             <View style={{ position: "absolute", bottom: -10, left: 0, height: '20%', width: '100%', justifyContent: 'center', backgroundColor: 'red' }}>
                                 <Text> A </Text>
                             </View>

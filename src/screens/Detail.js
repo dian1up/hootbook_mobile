@@ -22,8 +22,8 @@ class Detail extends React.Component {
                 'https://source.unsplash.com/1024x768/?tree'
             ],
             region: {
-                latitude: -7.797068,
-                longitude: 110.370529,
+                latitude: Number(this.props.navigation.state.params.item.latitude),
+                longitude: Number(this.props.navigation.state.params.item.longitude),
                 latitudeDelta: 0.00922 * 1.5,
                 longitudeDelta: 0.00421 * 1.5
             },
@@ -135,6 +135,7 @@ class Detail extends React.Component {
     render() {
         const { data } = this.state
         console.warn('data', data)
+        console.warn('latitude',this.props.navigation.state.params.item.latitude)
         return (
             <View style={styles.container}>
                 <View style={{
@@ -161,6 +162,7 @@ class Detail extends React.Component {
                             maxZoomLevel={20}
                         >
                             <Marker
+                                onPress={this.goBack}
                                 coordinate={{
                                     latitude: Number(data.latitude),
                                     longitude: Number(data.longitude)
