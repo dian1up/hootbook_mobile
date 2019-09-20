@@ -22,6 +22,7 @@ import HomeMitra from '../screens/HomeMitra'
 import ProfileMitra from '../screens/ProfileMitra'
 import EditProfileMitra from '../screens/EditProfileMitra'
 import HistoryMitra from '../screens/HistoryMitra'
+import History from '../screens/History'
 import ChatListMitra from '../screens/ChatlistMitra'
 import ChatListUser from '../screens/ChatlistUser'
 import { styles } from "react-native-image-slider-box/SliderBox";
@@ -175,11 +176,42 @@ const MitraTabNavigator = createMaterialTopTabNavigator(
 
 const AppStackNavigator = createStackNavigator(
     {
-        Homeuser: UserTabNavigator,
-        Homemitra: MitraTabNavigator,
-        Detail,
-        Edit,
-        Chat,
+        Homeuser: {
+            screen:UserTabNavigator,
+            navigationOptions:{
+                header:null
+            }
+        },
+        Homemitra:{
+            screen:MitraTabNavigator,
+            navigationOptions:{
+                header:null
+            }
+        },
+        Detail:{
+            screen:Detail,
+            navigationOptions:{
+                header:null
+            }
+        },
+        Edit:{
+            screen:Edit,
+            navigationOptions:{
+                title:'Edit Profile'
+            }
+        },
+        Chat:{
+            screen:Chat,
+            navigationOptions:{
+                title:'Chat'
+            }
+        },
+        History:{
+            screen:History,
+            navigationOptions:{
+                title:'History'
+            }
+        },
         EditProfileMitra: {
             screen: EditProfileMitra,
             navigationOptions: {
@@ -190,7 +222,7 @@ const AppStackNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'Homeuser',
-        headerMode: 'none',
+      
     },
 );
 

@@ -95,9 +95,10 @@ class Detail extends React.Component {
                         }
                     })
                     .then(res => {
-                        console.log(res)
-                        this.xendisInvois(res.data.data.totalPayment, this.state.currentUserData.email)
-                        alert('Success')
+                        console.log('booking step')
+                        console.log('colback = ',res)
+                        this.xendisInvois(res.data.data.totalPayment, this.state.currentUserData.email, res.data.data.id)
+                        
                     })
                     .catch(err => {
                         console.log(err)
@@ -132,27 +133,38 @@ class Detail extends React.Component {
         this.props.navigation.goBack()
     }
 
-    xendisInvois=async(amount, userEmail)=>{
+    xendisInvois=async(amount, userEmail, id)=>{
         let data ={
             "external_id": "invoice-{{$timestamp}}",
-            "amount": amount,
-            "payer_email": userEmail,
-            "description": "Booking Hotel Room"
+            "amount": 1800000,
+            "payer_email": "customer@domain.com",
+            "description": "Invoice Demo #123"
         }
         await Axios.post('https://api.xendit.co/v2/invoices',data,{
             auth:{
-                username:'xnd_development_GjFmOYU7tUUZjTkhn7WYFmAlxEtKEO14gFdFhPIsqhTIfj62UjrsujJVXqioRhn'
+                username:'xnd_development_65apFIlzhE8W7HVjgEI0ZiIUuRvcnkflJeLPvfVPq2vVlsTl8JhBlLdg1QJ2w5tZ'
             }
         })
-        .then(res=>{
+        .then((res)=>{
             let data={
                 id_transaction:res.data.id,
                 data:res.data,
                 status:res.data.status
             }
+            
+            let data2={
+                id:id,
+                amount:amount,
+                id_transaction:res.data.id,
+            }
+            Axios.patch('https://api-hot-book.herokuapp.com/xendit',data2,)
+                .then(res=>console.log(res))
+                .catch(err=>console.log(err))
+
             Axios.post('https://api-hot-book.herokuapp.com/payment/create',data,)
-            .then(res=>console.log(res))
-            .catch(err=>console.log(err))
+                .then(res=>console.log(res))
+                .catch(err=>console.log(err))
+                alert('Success')
         })
         .catch(err=>console.log('hai',err))
     }
