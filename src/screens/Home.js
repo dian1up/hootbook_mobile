@@ -11,9 +11,10 @@ class Home extends React.Component {
         super(props)
         //set value in state for initial date
         this.state = {
-            date: "15-05-2018",
+            checkIn: new Date(),
+            checkOut: new Date(),
             services: [],
-            isLoading: false
+            isLoading: false,
         }
     }
     componentDidMount = async () => {
@@ -31,11 +32,11 @@ class Home extends React.Component {
             .catch(err => {
                 console.log(err)
             })
+
+
     }
     render() {
         const data = this.state.services
-
-        console.warn('value', data && data)
         return (
             <ScrollView style={styles.container}>
                 <StatusBar translucent backgroundColor='#66a1e7' barStyle='light-content' />
@@ -47,15 +48,23 @@ class Home extends React.Component {
                     />
                     <View style={styles.wrapperCardSearch}>
                         <View style={styles.cardSearch}>
-                            <TextInput placeholder='Location'
+                            <TextInput placeholder='Search Location in here'
                                 style={styles.searching}
                             />
-                            <View style={{ flexDirection: 'row', marginVertical: 20 }}>
+                            <Image
+                                source={require('../assets/Icons/iconSearch.png')}
+                                style={{
+                                    position: 'absolute',
+                                    top: 17,
+                                    left: 10
+                                }}
+                            />
+                            <View style={{ flexDirection: 'row', marginVertical: 5 }}>
                                 <View style={{ flex: 1, }}>
                                     <Text>Check-In</Text>
                                     <DatePicker
 
-                                        date={this.state.date} //initial date from state
+                                        date={this.state.checkIn} //initial date from state
                                         mode="date" //The enum of date, datetime and time
                                         placeholder="select date"
                                         format="DD-MM-YYYY"
@@ -72,16 +81,17 @@ class Home extends React.Component {
                                             },
                                             dateInput: {
                                                 alignItems: 'baseline',
-                                                paddingLeft: 7
+                                                paddingLeft: 7,
+                                                borderWidth: 0
                                             }
                                         }}
-                                        onDateChange={(date) => { this.setState({ date: date }) }}
+                                        onDateChange={(checkIn) => { this.setState({ checkIn: checkIn }) }}
                                     />
                                 </View>
                                 <View style={{ flex: 1 }}>
                                     <Text>Check-Out</Text>
                                     <DatePicker
-                                        date={this.state.date} //initial date from state
+                                        date={this.state.checkOut} //initial date from state
                                         mode="date" //The enum of date, datetime and time
                                         placeholder="select date"
                                         format="DD-MM-YYYY"
@@ -98,16 +108,17 @@ class Home extends React.Component {
                                             },
                                             dateInput: {
                                                 alignItems: 'baseline',
-                                                paddingLeft: 7
+                                                paddingLeft: 7,
+                                                borderWidth: 0
                                             }
                                         }}
-                                        onDateChange={(date) => { this.setState({ date: date }) }}
+                                        onDateChange={(checkOut) => { this.setState({ checkOut: checkOut }) }}
                                     />
 
                                 </View>
                             </View>
                             <View style={{ justifyContent: 'center' }}>
-                                <TouchableOpacity onPress={() => { this.props.navigation.navigate('Explore') }} style={{ backgroundColor: '#66a1e7', borderRadius: 25, alignItems: 'center', paddingVertical: 12 }}>
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate('Explore') }} style={{ backgroundColor: '#66a1e7', borderRadius: 10, alignItems: 'center', paddingVertical: 12 }}>
                                     <Text style={{ fontSize: 16, fontWeight: '700', color: '#fff' }}>Search</Text>
                                 </TouchableOpacity>
                             </View>
@@ -115,7 +126,7 @@ class Home extends React.Component {
                     </View>
                 </View>
                 {/* populer destination */}
-                <View style={{ flex: 1, marginTop: 80, paddingHorizontal: 20 }}>
+                <View style={{ flex: 1, marginTop: 20, paddingHorizontal: 10, elevation: 3 }}>
                     <Text style={{ fontWeight: '700', fontSize: 16, marginBottom: 10, color: '#636e72' }} >
                         Where Are you go Now
                     </Text>
@@ -142,33 +153,30 @@ const styles = StyleSheet.create({
     bgImage: {
         width: '100%',
         height: '100%',
-        borderBottomRightRadius: 50,
-        borderBottomLeftRadius: 50,
         position: 'relative'
 
     },
     wrapperCardSearch: {
         position: 'absolute',
-        top: '35%',
+        top: '10%',
         left: 0,
         zIndex: 1,
-        height: '100%',
+        height: '80%',
         width: '100%',
-        padding: 20
+        padding: 10
     },
     cardSearch: {
         backgroundColor: 'white',
         width: '100%',
         height: '100%',
-        opacity: 0.8,
         elevation: 5,
         borderRadius: 15,
-        padding: 10
+        paddingHorizontal: 10
     },
     searching: {
-        borderWidth: 1,
-        borderColor: '#66a1e7',
-        borderRadius: 25,
-        paddingLeft: 20
+        paddingLeft: 35,
+        borderBottomColor: '#b2bec3',
+        borderBottomWidth: 1,
+        position: 'relative'
     }
 })

@@ -16,11 +16,15 @@ import Login from '../screens/login'
 import RegisterMitra from '../screens/RegisterMitra'
 import Detail from '../screens/Detail'
 import Chat from '../screens/Chat'
+import Explore from '../screens/Explore'
 // screen mitra
 import HomeMitra from '../screens/HomeMitra'
 import ProfileMitra from '../screens/ProfileMitra'
+import EditProfileMitra from '../screens/EditProfileMitra'
 import HistoryMitra from '../screens/HistoryMitra'
 import ChatListMitra from '../screens/ChatlistMitra'
+import ChatListUser from '../screens/ChatlistUser'
+import { styles } from "react-native-image-slider-box/SliderBox";
 
 
 
@@ -47,8 +51,8 @@ const UserTabNavigator = createMaterialTopTabNavigator(
                 ),
             },
         },
-        Chat: {
-            screen: Chat,
+        ChatListUser: {
+            screen: ChatListUser,
             navigationOptions: {
                 tabBarIcon: ({ tintColor }) => (
                     <Image
@@ -175,10 +179,17 @@ const AppStackNavigator = createStackNavigator(
         Homemitra: MitraTabNavigator,
         Detail,
         Edit,
-
+        Chat,
+        EditProfileMitra: {
+            screen: EditProfileMitra,
+            navigationOptions: {
+                title: 'Edit Profile'
+            }
+        },
+        Explore
     },
     {
-        // initialRouteName: 'Detail',
+        initialRouteName: 'Homeuser',
         headerMode: 'none',
     },
 );
