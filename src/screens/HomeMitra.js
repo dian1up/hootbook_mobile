@@ -19,7 +19,7 @@ export default class Craigslist extends Component {
     this.state = {
       modalVisible:false,
       userSelected:[],
-      data: [
+      services: [
         {id:1,  name: "Hotel 1",   image:"https://img.icons8.com/color/100/000000/real-estate.png",           count:"Price: $10/Night"},
         {id:2,  name: "Hotel 2",    image:"https://img.icons8.com/color/100/000000/real-estate.png",       count:"Price: $10/Night"},
         {id:3,  name: "Hotel 3",       image:"https://img.icons8.com/color/100/000000/real-estate.png", count:"Price: $10/Night"} ,
@@ -43,7 +43,7 @@ export default class Craigslist extends Component {
         <FlatList 
           style={styles.contentList}
           columnWrapperStyle={styles.listContainer}
-          data={this.state.data}
+          services={this.state.services}
           keyExtractor= {(item) => {
             return item.id;
           }}
